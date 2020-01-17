@@ -1,0 +1,26 @@
+- name: "copy consul-cluster to destination server"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /opt
+    mode: 0755
+  
+- name: "Template consul_bind_ip_generate.sh"
+  template: 
+    src: "{{ role_path }}/templates/consul_bind_ip_generate.sh.j2"
+    dest: /opt/consul-cluster/script
+  tags: template
+
+- name: "Template config-server.json"
+  template: 
+    src: "{{ role_path }}/templates/config-server.json.j2"
+    dest: /opt/consul-cluster/etc/consul
+  tags: template
+
+- name: "Install consul-cluster"
+  shell: cd /opt/consul-cluster;sh install.sh
+
+- name: "Start consul-cluster"
+  systemd:
+    name: consul-server-cluster
+    enabled: yes
+    daemon_reload: yes

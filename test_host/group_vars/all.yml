@@ -1,0 +1,11 @@
+influxdb:
+    cluster_ip: "192.168.40.210"
+
+minio:
+    data_dir: ./home/ceiec/minio_data
+    access_key: minio
+    secret_key: 1234567890
+
+consul:
+    datacenter: consul-xxg
+    keys: XwXLAbVN1C44dLUVJ6UL5A==

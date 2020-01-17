@@ -1,0 +1,15 @@
+- name: "copy maat-redis to destination server"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /home/ceiec
+    mode: 0755
+
+- name: "install maat-redis"
+  shell: cd /home/ceiec/maat-redis;sh install.sh
+
+- name: "start maat-redis"
+  systemd:
+    name: maat-redis.service
+    state: started
+    daemon_reload: yes
+    enabled: yes

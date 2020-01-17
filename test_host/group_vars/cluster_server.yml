@@ -1,0 +1,8 @@
+influxdb:
+    cluster_agent: 1
+    meta_dir: /var/lib/influxdb/meta
+    data_dir: /var/lib/influxdb/data
+    wal_dir: /var/lib/influxdb/wal-dir
+
+consul:
+    cluster_nig_mgr: eth0

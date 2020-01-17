@@ -1,0 +1,14 @@
+[all:vars]
+ansible_user=root
+
+[UI_server]
+192.168.41.208
+
+[cluster_server]
+192.168.41.208
+
+[blade-mxn]
+192.168.41.204
+
+[blade-00]
+192.168.41.206

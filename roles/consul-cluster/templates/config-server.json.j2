@@ -1,0 +1,12 @@
+{
+	"server" : true,
+	"datacenter" : "{{ consul.datacenter }}",
+	"data_dir" : "/var/consul-cluster",
+	"encrypt" : "{{ consul.keys}}",
+	"disable_update_check" : true,
+	"bootstrap" : true,
+	"log_file" : "/var/consul-cluster/log/consul_cluster.log",
+	"retry_join" : ["{{ inventory_hostname }}"],
+	"retry_interval" : "10s"
+}
+

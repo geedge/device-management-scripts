@@ -1,0 +1,20 @@
+- hosts: UI_server
+  roles:
+    - maat-redis
+
+- hosts: cluster_server
+  roles:
+    - consul-cluster
+    - influxdb
+    - minio
+
+- hosts: blade-mxn
+  roles:
+    - consul-external
+
+- hosts: blade-00
+  roles:
+    - consul-internal
+    - telegraf
+    - influxdb
+    - grafana

@@ -1,0 +1,25 @@
+- name: "copy MinioStanAlone"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /home/ceiec
+    mode: 0755
+
+- name: "Templates minio_dmn.sh"
+  template:
+    src: "{{ role_path }}/templates/minio_dmn.sh.j2"
+    dest: /home/ceiec/MinioStanAlone
+  tags: template
+
+- name: "Templates set_minio_profile"
+  template:
+    src: "{{ role_path }}/templates/set_minio_profile.sh.j2" 
+    dest: /home/ceiec/MinioStanAlone
+    owner: root
+    group: root
+
+- name: "set minio profile"
+  shell: cd /home/ceiec/MinioStanAlone;sh set_minio_profile.sh
+
+- name: "Start minio"
+  shell: cd /home/ceiec/MinioStanAlone;sh minio_start.sh
+
