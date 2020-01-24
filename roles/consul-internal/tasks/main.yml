@@ -1,0 +1,27 @@
+- name: "copy consul-internal to destination server"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /opt
+    mode: 0755
+  
+- name: "Template consul_bind_ip_generate.sh"
+  template: 
+    src: "{{ role_path }}/templates/consul_bind_ip_generate.sh.j2"
+    dest: /opt/consul-internal/script/consul_bind_ip_generate.sh
+  tags: template
+
+- name: "Template config-client.json"
+  template: 
+    src: "{{ role_path }}/templates/config-client.json.j2"
+    dest: /opt/consul-internal/etc/consul/config-client.json
+  tags: template
+
+- name: "Install consul-internal"
+  shell: cd /opt/consul-internal;sh install.sh
+
+- name: "Start consul-internal"
+  systemd:
+    name: consul-client-internal
+    state: restarted
+    enabled: yes
+    daemon_reload: yes

@@ -1,0 +1,12 @@
+[Unit]
+Requires=network.target
+After=network.target
+
+[Service]
+ExecStart=/etc/init.d/mariadb start
+ExecStop=/etc/init.d/mariadb stop
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
