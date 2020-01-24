@@ -9,13 +9,10 @@
       - /tmp/grafana-6.3.0-1.x86_64.rpm
     state: present
 
-- name: "bak original grafana.ini"
-  shell: cd /etc/grafana;mv grafana.ini grafana.ini_original
-
 - name: "Templates grafana.ini"
   template:
     src: "{{role_path}}/templates/grafana.ini.j2"
-    dest: /etc/grafana/
+    dest: /etc/grafana/grafana.ini
   tags: template
 
 - name: "copy dashboard-tfe.json"
@@ -32,9 +29,9 @@
     owner: root
     group: grafana
 
-- name: "copy dashboard-influxdb.yaml"
+- name: "copy datasources-influxdb.yaml"
   copy:
-    src: "{{ role_path }}/files/dashboard-influxdb.yaml"
+    src: "{{ role_path }}/files/datasources-influxdb.yaml"
     dest: /etc/grafana/provisioning/datasources/
     owner: root
     group: grafana
@@ -42,5 +39,5 @@
 - name: "Start grafana"
   systemd:
     name: grafana-server.service
-    state: started
+    state: restarted
     enabled: yes

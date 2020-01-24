@@ -1,11 +1,13 @@
 influxdb:
-    cluster_ip: "192.168.40.210"
-
-minio:
-    data_dir: ./home/ceiec/minio_data
-    access_key: minio
-    secret_key: 1234567890
+    cluster_ip: "172.16.124.133"
 
 consul:
     datacenter: consul-xxg
-    keys: XwXLAbVN1C44dLUVJ6UL5A==
+    dckey: "XwXLAbVN1C44dLUVJ6UL5A=="
+    cluster_ip: "172.16.124.133"
+    cluster_ethname: ens33
+    external_ethname: ens33
+    internal_ethname: ens33
+
+mariadb:
+    password: 111111

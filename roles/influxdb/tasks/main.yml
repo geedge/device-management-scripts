@@ -9,25 +9,23 @@
       - /tmp/influxdb-1.7.7.x86_64.rpm
     state: present
 
-- name: "bak original influxdb.conf"
-  shell: cd /etc/influxdb;mv influxdb.conf influxdb.conf_original
-
 - name: "Templates influxdb.conf"
   template:
     src: "{{role_path}}/templates/influxdb.conf.j2"
-    dest: /etc/influxdb/
+    dest: /etc/influxdb/influxdb.conf
   tags: template
 
 - name: "Start influxdb"
   systemd:
     name: influxdb.service
-    state: started
+    state: restarted
     enabled: yes
 
 - name: "script set_influxdb_cluster.sh"
   script: "{{role_path}}//files/set_influxdb_cluster.sh"
-  when: influxdb.cluster_agent is defined
+  when: influxdb.cluster_agent == "yes"
 
 - name: "script set_influxdb_blade00.sh"
   script: "{{role_path}}//files/set_influxdb_blade00.sh"
+  when: influxdb.mcn0_agent == "yes"
 

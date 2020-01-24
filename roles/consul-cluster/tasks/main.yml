@@ -7,13 +7,13 @@
 - name: "Template consul_bind_ip_generate.sh"
   template: 
     src: "{{ role_path }}/templates/consul_bind_ip_generate.sh.j2"
-    dest: /opt/consul-cluster/script
+    dest: /opt/consul-cluster/script/consul_bind_ip_generate.sh
   tags: template
 
 - name: "Template config-server.json"
   template: 
     src: "{{ role_path }}/templates/config-server.json.j2"
-    dest: /opt/consul-cluster/etc/consul
+    dest: /opt/consul-cluster/etc/consul/config-server.json
   tags: template
 
 - name: "Install consul-cluster"
@@ -22,5 +22,6 @@
 - name: "Start consul-cluster"
   systemd:
     name: consul-server-cluster
+    state: restarted
     enabled: yes
     daemon_reload: yes

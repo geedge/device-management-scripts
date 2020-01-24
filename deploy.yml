@@ -1,12 +1,8 @@
-- hosts: UI_server
-  roles:
-    - maat-redis
-
 - hosts: cluster_server
   roles:
     - consul-cluster
     - influxdb
-    - minio
+    - MariaDB
 
 - hosts: blade-mxn
   roles:

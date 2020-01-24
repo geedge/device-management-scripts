@@ -9,17 +9,14 @@
       - /tmp/telegraf-1.11.4-1.x86_64.rpm
     state: present
 
-- name: "bak original telegraf.conf"
-  shell: cd /etc/telegraf;mv telegraf.conf telegraf.conf_original
-
 - name: "Templates telegraf.conf"
   template:
     src: "{{role_path}}/templates/telegraf.conf.j2"
-    dest: /etc/telegraf/
+    dest: /etc/telegraf/telegraf.conf
   tags: template
 
 - name: "Start telegraf"
   systemd:
     name: telegraf.service
-    state: started
+    state: restarted
     enabled: yes
