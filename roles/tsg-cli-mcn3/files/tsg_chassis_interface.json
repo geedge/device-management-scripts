@@ -1,0 +1,13 @@
+{
+	"interface_list": [{
+		"dev_name": "ens8f1",
+		"dev_type": "pcap",
+		"flow_type": "intercomm"
+	},{
+		"dev_name": "ens8f2",
+		"dev_type": "marsio",
+		"flow_type": "mirror"
+	}
+
+	]
+}

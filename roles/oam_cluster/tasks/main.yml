@@ -1,0 +1,16 @@
+- name: "copy oam_cluster.rpm to destination server"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /tmp
+
+- name: "install oam_cluster"
+  yum:
+    name:
+      - /tmp/oam_cluster-1.0-1.0.x86_64.rpm
+    state: present
+
+- name: "Start oam_cluster"
+  systemd:
+    name: oam_cluster
+    state: restarted
+    enabled: yes

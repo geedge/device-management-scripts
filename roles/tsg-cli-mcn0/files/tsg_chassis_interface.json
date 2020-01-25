@@ -1,0 +1,10 @@
+{
+	"local_chassis_node": "mcn0",
+	"interface_list": [
+	{
+		"dev_name": "ens1f4",
+		"dev_type": "marsio",
+		"flow_type": "inline"
+	}
+	]
+}

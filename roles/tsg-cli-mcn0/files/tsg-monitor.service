@@ -1,0 +1,16 @@
+[Unit]
+Description=tsg monitor service
+Requires=network.target
+After=network.target
+
+[Service]
+#WorkingDirectory=/opt/tsg/tsg-monitor/
+ExecStart=/opt/tsg/tsg-monitor/tsg-monitor.sh
+#ExecStop=/home/tsg/kni/kni_service_scipt stop
+#ExecStop=/bin/kill -9 $MAINPID
+Type=simple
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

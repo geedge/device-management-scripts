@@ -1,0 +1,16 @@
+- name: "copy oam_cli.rpm to destination server"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /tmp
+
+- name: "install oam_cli"
+  yum:
+    name:
+      - /tmp/oam_cli-1.0-1.0.x86_64.rpm
+    state: present
+
+- name: "Templates application.properties"
+  template:
+    src: "{{role_path}}/templates/application.properties.j2"
+    dest: /opt/tsg/oam_cli/application.properties
+  tags: template

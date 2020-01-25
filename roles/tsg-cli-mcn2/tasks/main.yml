@@ -1,0 +1,60 @@
+---
+- name: "copy tsg-cli rmp to destination server"
+  synchronize:
+    src: "{{ role_path }}/../tsg-common-files/{{ rpm_file_name }}"
+    dest: "/tmp/tsg-cli-deploy/"
+    
+- name: "install tsg-cli"
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - /tmp/tsg-cli-deploy/{{ rpm_file_name }}
+
+- name: Template the tsg_sn.json
+  template:
+    src: "{{ role_path }}/templates/tsg_sn.json.j2"
+    dest: /opt/tsg/etc/tsg_sn.json
+  tags: template
+  when: not use_chassis_hardware_sn | bool 
+
+- name: "copy tsg_sn.json to destination server"
+  synchronize:
+    src: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
+    dest: "/opt/tsg/etc/tsg_sn.json"
+  when: use_chassis_hardware_sn | bool 
+  
+- name: "copy tsg-monitor.service to destination server"
+  synchronize:
+    src: "{{ role_path }}/files/tsg-monitor.service"
+    dest: "/usr/lib/systemd/system"
+
+- name: "copy tsg_chassis_interface.json to destination server"
+  synchronize:
+    src: "{{ role_path }}/files/tsg_chassis_interface.json"
+    dest: "/opt/tsg/etc/"
+
+- name: "copy tsg-monitor.sh to destination server"
+  #synchronize:
+  copy:
+    src: "{{ role_path }}/files/tsg-monitor.sh"
+    dest: "/opt/tsg/tsg-monitor/"    
+    mode: 0755  
+
+- name: "copy rsyslog.conf to destination server"
+  synchronize:
+    src: "{{ role_path }}/files/rsyslog.conf"
+    dest: "/etc/"
+
+- name: "restart rsyslog service"
+  systemd:
+    name: rsyslog
+    state: restarted
+    
+- name: "enable tsg-monitor service"
+  systemd:
+    name: tsg-monitor
+    enabled: yes
+    daemon_reload: yes   
+    state: restarted    

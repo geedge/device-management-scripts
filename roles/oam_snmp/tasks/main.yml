@@ -1,0 +1,37 @@
+- name: "copy oam_snmp.rpm to destination server"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /tmp
+
+- name: "install oam_snmp"
+  yum:
+    name:
+      - /tmp/oam_snmp-1.0-1.0.x86_64.rpm
+    state: present
+
+- name: "Templates application-centos2.properties"
+  template:
+    src: "{{role_path}}/templates/application.properties.j2"
+    dest: /opt/tsg/oam_snmp/application.properties
+  tags: template
+
+- name: "Start oam_snmp"
+  systemd:
+    name: oam_snmp
+    state: restarted
+    enabled: yes
+
+- name: "bak snmpd.conf"
+  shell: cp -rf /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf_origin
+
+- name: "Templates snmpd.conf"
+  template:
+    src: "{{role_path}}/templates/snmpd.conf"
+    dest: /etc/snmp/snmpd.conf
+  tags: template
+
+- name: "Start snmpd"
+  systemd:
+    name: snmpd
+    state: restarted
+    enabled: yes

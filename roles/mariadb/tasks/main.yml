@@ -69,7 +69,9 @@
   shell: cd /home/database/mysql/scripts;./mysql_install_db --basedir=/home/database/mysql --datadir=/home/database/dbdata --user=mysql
 
 - name: "set my.cnf"
-  shell: cd /home/database/mysql/support-files;cp my-huge.cnf /etc/mysql/my.cnf
+  copy:
+    src: "{{ role_path }}/files/my.cnf"
+    dest: "/etc/mysql/my.cnf"
 
 - name: "copy mariadb"
   copy:

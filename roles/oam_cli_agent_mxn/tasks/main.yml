@@ -1,0 +1,16 @@
+- name: "copy oam_cli_agent_mxn.rpm to destination server"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /tmp
+
+- name: "install oam_cli_agent_mxn"
+  yum:
+    name:
+      - /tmp/oam_cli_agent_mxn-1.0-1.0.x86_64.rpm
+    state: present
+
+- name: "Start oam_cli_agent_mxn"
+  systemd:
+    name: oam_cli_agent_mxn
+    state: restarted
+    enabled: yes

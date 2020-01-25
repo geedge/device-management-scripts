@@ -1,0 +1,53 @@
+sn.config=/opt/tsg/etc/tsg_sn.json
+mxn.config=/opt/tsg/etc/tsg_chassis_ip.json
+tags.config=/opt/tsg/etc/tsg_tags.json
+port.config=/opt/tsg/etc/tsg_chassis_port.json
+
+mxn.dir=/opt/tsg/bin/
+mxn.tsg_software_reboot=${mxn.dir}tsg_software_reboot
+mxn.tsg_hardware_reboot=${mxn.dir}tsg_hardware_reboot
+
+oam.syslog.dir=/var/log
+# 系统日志最近处理时间保存文件
+oam.syslog.time.file=/opt/tsg/oam_core/syslog_time.txt
+
+ipmi.sensor.mxn=ipmitool sensor
+ipmi.sensor.mcn0=ipmitool -t 0x90 sensor
+ipmi.sensor.mcn1=ipmitool -t 0x80 sensor
+ipmi.sensor.mcn2=ipmitool -t 0x98 sensor
+ipmi.sensor.mcn3=ipmitool -t 0x88 sensor
+ipmi.fru.mxn=ipmitool fru
+ipmi.fru.mcn0=ipmitool -t 0x90 fru
+ipmi.fru.mcn1=ipmitool -t 0x80 fru
+ipmi.fru.mcn2=ipmitool -t 0x98 fru
+ipmi.fru.mcn3=ipmitool -t 0x88 fru
+network.data=/opt/tsg/oam_core/shell/network.sh
+
+# 本机influx和mariadb地址
+oam.local.server.ip={{ mcn0_ip }}
+# 集群influx和mariadb地址
+oam.cluster.server.ip={{ influxdb.cluster_ip }}
+# influxdb端口
+oam.influx.port=58086
+
+# influxdb - cluster
+oam.writer.influxcluster.db=tsg_stat
+
+# datasource - local
+datasource.first.password=tsg2019
+
+# datasource - cluster
+datasource.second.username=root
+datasource.second.password=111111
+
+
+oam.writer.scheduler.interval=60000
+oam.writer.scheduler.ipmi.interval=180000
+
+logging.level.com.cs.oam=ERROR
+
+# Absolute path
+oam.rest.oam_core=/opt/tsg/oam_core/application-centos2.properties
+oam.rest.oam_snmp=/opt/tsg/snmp/application.properties
+#oam.rest.cli_agent=opt/tsg/snmp/application-centos2.properties
+oam.rest.cli=/home/tsgroot/opt/tsg/cli/application.properties
