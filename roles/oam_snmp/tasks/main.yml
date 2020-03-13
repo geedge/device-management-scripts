@@ -9,10 +9,10 @@
       - /tmp/oam_snmp-1.0-1.0.x86_64.rpm
     state: present
 
-- name: "Templates application-centos2.properties"
+- name: "Templates application.properties"
   template:
     src: "{{role_path}}/templates/application.properties.j2"
-    dest: /opt/tsg/oam_snmp/application.properties
+    dest: /opt/tsg/snmp/application.properties
   tags: template
 
 - name: "Start oam_snmp"
@@ -30,8 +30,9 @@
     dest: /etc/snmp/snmpd.conf
   tags: template
 
-- name: "Start snmpd"
-  systemd:
-    name: snmpd
-    state: restarted
-    enabled: yes
+#- name: "Start snmpd"
+#  systemd:
+#    name: snmpd
+#    state: restarted
+#    enabled: yes
+#  ignore_errors: yes

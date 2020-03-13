@@ -1,0 +1,13 @@
+influxdb:
+    cluster_ip: "192.168.40.210"
+
+consul:
+    datacenter: consul-xxg
+    dckey: "XwXLAbVN1C44dLUVJ6UL5A=="
+    cluster_ip: "192.168.40.210"
+    cluster_ethname: ens33
+    external_ethname: ens33
+    internal_ethname: ens33
+
+mariadb:
+    password: 111111

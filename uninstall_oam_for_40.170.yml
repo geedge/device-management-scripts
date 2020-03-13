@@ -1,0 +1,62 @@
+---
+- hosts: tsg-all
+  tasks:
+    - name: "stop tsg-monitor service"
+      service:
+        name: tsg-monitor
+        state: stopped
+      ignore_errors: yes
+
+    - name: "stop oam_core service"
+      service:
+        name: oam_core
+        state: stopped
+      ignore_errors: yes
+
+    - name: "stop oam_snmp service"
+      service:
+        name: oam_snmp
+        state: stopped
+      ignore_errors: yes
+
+    - name: "stop oam_cli_agent_mxn service"
+      service:
+        name: oam_cli_agent_mxn
+        state: stopped
+      ignore_errors: yes
+
+    - name: "stop oam_cli_agent service"
+      service:
+        name: oam_cli_agent
+        state: stopped
+      ignore_errors: yes
+        
+    - name: "uninstall tsg-cli"
+      yum:
+        name: "tsg-cli"
+        state: absent         
+
+    - name: "uninstall oam_cli_agent"
+      yum:
+        name: "oam_cli_agent"
+        state: absent  
+
+    - name: "uninstall oam_core"
+      yum:
+        name: "oam_core"
+        state: absent  
+
+    - name: "uninstall oam_snmp"
+      yum:
+        name: "oam_snmp"
+        state: absent  
+
+    - name: "uninstall oam_cli"
+      yum:
+        name: "oam_cli"
+        state: absent  
+
+    - name: "uninstall oam_cli_agent_mxn"
+      yum:
+        name: "oam_cli_agent_mxn"
+        state: absent          

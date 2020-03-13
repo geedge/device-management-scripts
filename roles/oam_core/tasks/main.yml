@@ -1,7 +1,8 @@
+---
 - name: "copy oam_core.rpm to destination server"
-  copy:
-    src: "{{ role_path }}/files/"
-    dest: /tmp
+  synchronize:
+    src: "{{ role_path }}/files/oam_core-1.0-1.0.x86_64.rpm"
+    dest: "/tmp/"
 
 - name: "install oam_core"
   yum:

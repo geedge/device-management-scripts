@@ -1,7 +1,7 @@
 [all:vars]
 ansible_user=root
 use_chassis_hardware_sn=true
-rpm_file_name=tsg-cli-1.0.13.c6d5037-1.el7.x86_64.rpm
+rpm_file_name=tsg-cli-1.0.14.eccfd07-1.el7.x86_64.rpm
 
 [cluster_server]
 172.16.124.134
