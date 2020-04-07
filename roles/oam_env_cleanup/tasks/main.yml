@@ -1,0 +1,12 @@
+---
+
+- name: "Templates tsg_threshold.sql"
+  template:
+    src: "{{role_path}}/templates/tsg_threshold_cleanup.sql.j2"
+    dest: /tmp/tsg_threshold_cleanup.sql
+  tags: cleanup
+
+ 
+- name: "import the sql after template"
+  shell: mysql -s -h 127.0.0.1 -u {{ mariadb.username }} -p{{ mariadb.password }}  < /tmp/tsg_threshold_cleanup.sql
+  tags: cleanup

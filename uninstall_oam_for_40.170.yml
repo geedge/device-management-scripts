@@ -59,4 +59,10 @@
     - name: "uninstall oam_cli_agent_mxn"
       yum:
         name: "oam_cli_agent_mxn"
-        state: absent          
+        state: absent   
+        
+- hosts: sled-mcn0
+  gather_facts: no
+  roles:
+    - oam_env_cleanup
+        
