@@ -1,0 +1,277 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50713
+Source Host           : localhost:3306
+Source Database       : alt
+
+Target Server Type    : MYSQL
+Target Server Version : 50713
+File Encoding         : 65001
+
+Date: 2020-01-21 17:33:00
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+use tsg_oam;
+
+-- ----------------------------
+-- Table structure for `tsg_threshold`
+-- ----------------------------
+DROP TABLE IF EXISTS `tsg_threshold`;
+CREATE TABLE `tsg_threshold` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `component` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `counter` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `critical_high` float DEFAULT NULL,
+  `critical_low` float DEFAULT NULL,
+  `major_high` float DEFAULT NULL,
+  `major_low` float DEFAULT NULL,
+  `minor_high` float DEFAULT NULL,
+  `minor_low` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=239 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of tsg_threshold
+-- ----------------------------
+INSERT INTO `tsg_threshold` VALUES ('1', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'CMM_TEMP', '55', '-10', '46', '-5', '39', '0');
+INSERT INTO `tsg_threshold` VALUES ('2', '{{ adc_tsg_sn.stdout }}_mxn_network_port_1', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('3', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'COME_TEMP', '90', '-10', '76', '-5', '63', '0');
+INSERT INTO `tsg_threshold` VALUES ('4', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'RRC_TEMP', '90', '-10', '76', '-5', '63', '0');
+INSERT INTO `tsg_threshold` VALUES ('5', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'P1V', '1.15', '0.85', '1.1', '0.9', '1.05', '0.95');
+INSERT INTO `tsg_threshold` VALUES ('6', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'PVDDS', '1.07', '0.71', '1.04', '0.73', '1', '0.76');
+INSERT INTO `tsg_threshold` VALUES ('7', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'PVDDF', '1.12', '0.71', '1.1', '0.73', '1.05', '0.76');
+INSERT INTO `tsg_threshold` VALUES ('8', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'P3V3', '3.636', '2.964', '3.535', '3.066', '3.475', '3.139');
+INSERT INTO `tsg_threshold` VALUES ('9', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'P5V', '5.745', '4.234', '5.494', '4.486', '5.242', '4.738');
+INSERT INTO `tsg_threshold` VALUES ('10', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'P12V', '13.583', '10.415', '13.072', '10.926', '12.51', '11.488');
+INSERT INTO `tsg_threshold` VALUES ('11', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'P1V_RT', '1.15', '0.85', '1.1', '0.9', '1.05', '0.95');
+INSERT INTO `tsg_threshold` VALUES ('12', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'Fan_1', '9472', '512', '8672', '672', '7872', '832');
+INSERT INTO `tsg_threshold` VALUES ('13', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'Fan_2', '9472', '512', '8672', '672', '7872', '832');
+INSERT INTO `tsg_threshold` VALUES ('14', '{{ adc_tsg_sn.stdout }}_mxn_hardware', 'Fan_3', '9472', '512', '8672', '672', '7872', '832');
+INSERT INTO `tsg_threshold` VALUES ('15', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'HS_Current0', '40.25', '0', '37.25', '0', '36.75', '0');
+INSERT INTO `tsg_threshold` VALUES ('16', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'HS_Current0', '40.25', '0', '37.25', '0', '36.75', '0');
+INSERT INTO `tsg_threshold` VALUES ('17', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'HS_Current0', '40.25', '0', '37.25', '0', '36.75', '0');
+INSERT INTO `tsg_threshold` VALUES ('18', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'HS_Current0', '40.25', '0', '37.25', '0', '36.75', '0');
+INSERT INTO `tsg_threshold` VALUES ('19', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'HS_Volt0', '12.75', '10.5', '12.5', '10.875', '12.25', '11.125');
+INSERT INTO `tsg_threshold` VALUES ('20', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'HS_Volt0', '12.75', '10.5', '12.5', '10.875', '12.25', '11.125');
+INSERT INTO `tsg_threshold` VALUES ('21', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'HS_Volt0', '12.75', '10.5', '12.5', '10.875', '12.25', '11.125');
+INSERT INTO `tsg_threshold` VALUES ('22', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'HS_Volt0', '12.75', '10.5', '12.5', '10.875', '12.25', '11.125');
+INSERT INTO `tsg_threshold` VALUES ('23', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'P1V05_PCH', '1.147', '0.941', '1.117', '0.97', '1.098', '1');
+INSERT INTO `tsg_threshold` VALUES ('24', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'P1V05_PCH', '1.147', '0.941', '1.117', '0.97', '1.098', '1');
+INSERT INTO `tsg_threshold` VALUES ('25', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'P1V05_PCH', '1.147', '0.941', '1.117', '0.97', '1.098', '1');
+INSERT INTO `tsg_threshold` VALUES ('26', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'P1V05_PCH', '1.147', '0.941', '1.117', '0.97', '1.098', '1');
+INSERT INTO `tsg_threshold` VALUES ('27', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'P1V2_DDR0', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('28', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'P1V2_DDR0', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('29', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'P1V2_DDR0', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('30', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'P1V2_DDR0', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('31', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'P1V2_DDR1', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('32', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'P1V2_DDR1', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('33', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'P1V2_DDR1', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('34', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'P1V2_DDR1', '1.303', '1.078', '1.284', '1.117', '1.254', '1.137');
+INSERT INTO `tsg_threshold` VALUES ('35', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'P3V3', '3.569', '2.945', '3.51', '3.042', '3.452', '3.12');
+INSERT INTO `tsg_threshold` VALUES ('36', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'P3V3', '3.569', '2.945', '3.51', '3.042', '3.452', '3.12');
+INSERT INTO `tsg_threshold` VALUES ('37', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'P3V3', '3.569', '2.945', '3.51', '3.042', '3.452', '3.12');
+INSERT INTO `tsg_threshold` VALUES ('38', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'P3V3', '3.569', '2.945', '3.51', '3.042', '3.452', '3.12');
+INSERT INTO `tsg_threshold` VALUES ('39', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'P5V', '5.453', '4.494', '5.343', '4.631', '5.233', '4.74');
+INSERT INTO `tsg_threshold` VALUES ('40', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'P5V', '5.453', '4.494', '5.343', '4.631', '5.233', '4.74');
+INSERT INTO `tsg_threshold` VALUES ('41', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'P5V', '5.453', '4.494', '5.343', '4.631', '5.233', '4.74');
+INSERT INTO `tsg_threshold` VALUES ('42', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'P5V', '5.453', '4.494', '5.343', '4.631', '5.233', '4.74');
+INSERT INTO `tsg_threshold` VALUES ('43', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'PVCCIN_CPU0', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('44', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'PVCCIN_CPU0', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('45', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'PVCCIN_CPU0', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('46', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'PVCCIN_CPU0', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('47', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'PVCCIN_CPU1', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('48', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'PVCCIN_CPU1', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('49', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'PVCCIN_CPU1', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('50', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'PVCCIN_CPU1', '2.019', '1.323', '1.98', '1.343', '1.94', '1.352');
+INSERT INTO `tsg_threshold` VALUES ('51', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'PVCCIO', '1.029', '0.853', '1.009', '0.882', '1', '0.902');
+INSERT INTO `tsg_threshold` VALUES ('52', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'PVCCIO', '1.029', '0.853', '1.009', '0.882', '1', '0.902');
+INSERT INTO `tsg_threshold` VALUES ('53', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'PVCCIO', '1.029', '0.853', '1.009', '0.882', '1', '0.902');
+INSERT INTO `tsg_threshold` VALUES ('54', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'PVCCIO', '1.029', '0.853', '1.009', '0.882', '1', '0.902');
+INSERT INTO `tsg_threshold` VALUES ('55', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_LL', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('56', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_LL', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('57', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_LL', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('58', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_LL', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('59', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_LR', '45', '-10', '42', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('60', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_LR', '45', '-10', '42', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('61', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_LR', '45', '-10', '42', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('62', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_LR', '45', '-10', '42', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('63', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_PCH', '82', '-10', '74', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('64', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_PCH', '82', '-10', '74', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('65', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_PCH', '82', '-10', '74', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('66', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_PCH', '82', '-10', '74', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('67', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_UL', '85', '-10', '75', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('68', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_UL', '85', '-10', '75', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('69', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_UL', '85', '-10', '75', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('70', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_UL', '85', '-10', '75', '-5', '66', '0');
+INSERT INTO `tsg_threshold` VALUES ('71', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_UR', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('72', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_UR', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('73', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_UR', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('74', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_UR', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('75', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_XL710_82599', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('76', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_XL710_82599', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('77', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_XL710_82599', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('78', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_XL710_82599', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('79', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_mIO0', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('80', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_mIO0', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('81', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_mIO0', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('82', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_mIO0', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('83', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'Temp_mIO1', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('84', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'Temp_mIO1', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('85', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'Temp_mIO1', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('86', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'Temp_mIO1', '60', '-10', '50', '-5', '40', '0');
+INSERT INTO `tsg_threshold` VALUES ('87', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'PECI_CPU0', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('88', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'PECI_CPU0', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('89', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'PECI_CPU0', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('90', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'PECI_CPU0', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('91', '{{ adc_tsg_sn.stdout }}_mcn0_hardware', 'PECI_CPU1', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('92', '{{ adc_tsg_sn.stdout }}_mcn1_hardware', 'PECI_CPU1', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('93', '{{ adc_tsg_sn.stdout }}_mcn2_hardware', 'PECI_CPU1', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('94', '{{ adc_tsg_sn.stdout }}_mcn3_hardware', 'PECI_CPU1', '90', '-10', '80', '-5', '70', '0');
+INSERT INTO `tsg_threshold` VALUES ('95', '{{ adc_tsg_sn.stdout }}_mxn_cpu', 'laLoad_1', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('96', '{{ adc_tsg_sn.stdout }}_mcn0_cpu', 'laLoad_1', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('97', '{{ adc_tsg_sn.stdout }}_mcn1_cpu', 'laLoad_1', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('98', '{{ adc_tsg_sn.stdout }}_mcn2_cpu', 'laLoad_1', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('99', '{{ adc_tsg_sn.stdout }}_mcn3_cpu', 'laLoad_1', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('100', '{{ adc_tsg_sn.stdout }}_mxn_cpu', 'laLoad_5', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('101', '{{ adc_tsg_sn.stdout }}_mcn0_cpu', 'laLoad_5', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('102', '{{ adc_tsg_sn.stdout }}_mcn1_cpu', 'laLoad_5', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('103', '{{ adc_tsg_sn.stdout }}_mcn2_cpu', 'laLoad_5', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('104', '{{ adc_tsg_sn.stdout }}_mcn3_cpu', 'laLoad_5', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('105', '{{ adc_tsg_sn.stdout }}_mxn_cpu', 'laLoad_10', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('106', '{{ adc_tsg_sn.stdout }}_mcn0_cpu', 'laLoad_10', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('107', '{{ adc_tsg_sn.stdout }}_mcn1_cpu', 'laLoad_10', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('108', '{{ adc_tsg_sn.stdout }}_mcn2_cpu', 'laLoad_10', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('109', '{{ adc_tsg_sn.stdout }}_mcn3_cpu', 'laLoad_10', '99', null, '85', null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('110', '{{ adc_tsg_sn.stdout }}_mxn_cpu', 'ssCpuUser', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('111', '{{ adc_tsg_sn.stdout }}_mcn0_cpu', 'ssCpuUser', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('112', '{{ adc_tsg_sn.stdout }}_mcn1_cpu', 'ssCpuUser', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('113', '{{ adc_tsg_sn.stdout }}_mcn2_cpu', 'ssCpuUser', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('114', '{{ adc_tsg_sn.stdout }}_mcn3_cpu', 'ssCpuUser', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('115', '{{ adc_tsg_sn.stdout }}_mxn_cpu', 'ssCpuSystem', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('116', '{{ adc_tsg_sn.stdout }}_mcn0_cpu', 'ssCpuSystem', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('117', '{{ adc_tsg_sn.stdout }}_mcn1_cpu', 'ssCpuSystem', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('118', '{{ adc_tsg_sn.stdout }}_mcn2_cpu', 'ssCpuSystem', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('119', '{{ adc_tsg_sn.stdout }}_mcn3_cpu', 'ssCpuSystem', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('120', '{{ adc_tsg_sn.stdout }}_mxn_cpu', 'ssCpuIdle', null, '15', null, '30', null, '40');
+INSERT INTO `tsg_threshold` VALUES ('121', '{{ adc_tsg_sn.stdout }}_mcn0_cpu', 'ssCpuIdle', null, '15', null, '30', null, '40');
+INSERT INTO `tsg_threshold` VALUES ('122', '{{ adc_tsg_sn.stdout }}_mcn1_cpu', 'ssCpuIdle', null, '15', null, '30', null, '40');
+INSERT INTO `tsg_threshold` VALUES ('123', '{{ adc_tsg_sn.stdout }}_mcn2_cpu', 'ssCpuIdle', null, '15', null, '30', null, '40');
+INSERT INTO `tsg_threshold` VALUES ('124', '{{ adc_tsg_sn.stdout }}_mcn3_cpu', 'ssCpuIdle', null, '15', null, '30', null, '40');
+INSERT INTO `tsg_threshold` VALUES ('125', '{{ adc_tsg_sn.stdout }}_mxn_memory', 'memTotalReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('126', '{{ adc_tsg_sn.stdout }}_mcn0_memory', 'memTotalReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('127', '{{ adc_tsg_sn.stdout }}_mcn1_memory', 'memTotalReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('128', '{{ adc_tsg_sn.stdout }}_mcn2_memory', 'memTotalReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('129', '{{ adc_tsg_sn.stdout }}_mcn3_memory', 'memTotalReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('130', '{{ adc_tsg_sn.stdout }}_mxn_memory', 'memAvailReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('131', '{{ adc_tsg_sn.stdout }}_mcn0_memory', 'memAvailReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('132', '{{ adc_tsg_sn.stdout }}_mcn1_memory', 'memAvailReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('133', '{{ adc_tsg_sn.stdout }}_mcn2_memory', 'memAvailReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('134', '{{ adc_tsg_sn.stdout }}_mcn3_memory', 'memAvailReal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('135', '{{ adc_tsg_sn.stdout }}_mxn_memory', 'memTotalSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('136', '{{ adc_tsg_sn.stdout }}_mcn0_memory', 'memTotalSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('137', '{{ adc_tsg_sn.stdout }}_mcn1_memory', 'memTotalSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('138', '{{ adc_tsg_sn.stdout }}_mcn2_memory', 'memTotalSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('139', '{{ adc_tsg_sn.stdout }}_mcn3_memory', 'memTotalSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('140', '{{ adc_tsg_sn.stdout }}_mxn_memory', 'memAvailSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('141', '{{ adc_tsg_sn.stdout }}_mcn0_memory', 'memAvailSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('142', '{{ adc_tsg_sn.stdout }}_mcn1_memory', 'memAvailSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('143', '{{ adc_tsg_sn.stdout }}_mcn2_memory', 'memAvailSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('144', '{{ adc_tsg_sn.stdout }}_mcn3_memory', 'memAvailSwap', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('145', '{{ adc_tsg_sn.stdout }}_mxn_memory', 'memTotalFree', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('146', '{{ adc_tsg_sn.stdout }}_mcn0_memory', 'memTotalFree', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('147', '{{ adc_tsg_sn.stdout }}_mcn1_memory', 'memTotalFree', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('148', '{{ adc_tsg_sn.stdout }}_mcn2_memory', 'memTotalFree', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('149', '{{ adc_tsg_sn.stdout }}_mcn3_memory', 'memTotalFree', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('150', '{{ adc_tsg_sn.stdout }}_mxn_disk', 'dskTotal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('151', '{{ adc_tsg_sn.stdout }}_mcn0_disk', 'dskTotal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('152', '{{ adc_tsg_sn.stdout }}_mcn1_disk', 'dskTotal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('153', '{{ adc_tsg_sn.stdout }}_mcn2_disk', 'dskTotal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('154', '{{ adc_tsg_sn.stdout }}_mcn3_disk', 'dskTotal', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('155', '{{ adc_tsg_sn.stdout }}_mxn_disk', 'dskUsed', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('156', '{{ adc_tsg_sn.stdout }}_mcn0_disk', 'dskUsed', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('157', '{{ adc_tsg_sn.stdout }}_mcn1_disk', 'dskUsed', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('158', '{{ adc_tsg_sn.stdout }}_mcn2_disk', 'dskUsed', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('159', '{{ adc_tsg_sn.stdout }}_mcn3_disk', 'dskUsed', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('160', '{{ adc_tsg_sn.stdout }}_mxn_disk', 'dskAvail', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('161', '{{ adc_tsg_sn.stdout }}_mcn0_disk', 'dskAvail', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('162', '{{ adc_tsg_sn.stdout }}_mcn1_disk', 'dskAvail', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('163', '{{ adc_tsg_sn.stdout }}_mcn2_disk', 'dskAvail', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('164', '{{ adc_tsg_sn.stdout }}_mcn3_disk', 'dskAvail', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('165', '{{ adc_tsg_sn.stdout }}_mxn_disk', 'dskPercent', '90', null, '80', null, '70', null);
+INSERT INTO `tsg_threshold` VALUES ('166', '{{ adc_tsg_sn.stdout }}_mcn0_disk', 'dskPercent', '90', null, '80', null, '70', null);
+INSERT INTO `tsg_threshold` VALUES ('167', '{{ adc_tsg_sn.stdout }}_mcn1_disk', 'dskPercent', '90', null, '80', null, '70', null);
+INSERT INTO `tsg_threshold` VALUES ('168', '{{ adc_tsg_sn.stdout }}_mcn2_disk', 'dskPercent', '90', null, '80', null, '70', null);
+INSERT INTO `tsg_threshold` VALUES ('169', '{{ adc_tsg_sn.stdout }}_mcn3_disk', 'dskPercent', '90', null, '80', null, '70', null);
+INSERT INTO `tsg_threshold` VALUES ('170', '{{ adc_tsg_sn.stdout }}_mxn_disk', 'dskPercentSled', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('171', '{{ adc_tsg_sn.stdout }}_mcn0_disk', 'dskPercentSled', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('172', '{{ adc_tsg_sn.stdout }}_mcn1_disk', 'dskPercentSled', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('173', '{{ adc_tsg_sn.stdout }}_mcn2_disk', 'dskPercentSled', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('174', '{{ adc_tsg_sn.stdout }}_mcn3_disk', 'dskPercentSled', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('175', '{{ adc_tsg_sn.stdout }}_mxn_network_port_1', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('176', '{{ adc_tsg_sn.stdout }}_mxn_network_port_2', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('177', '{{ adc_tsg_sn.stdout }}_mxn_network_port_3', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('178', '{{ adc_tsg_sn.stdout }}_mxn_network_port_4', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('179', '{{ adc_tsg_sn.stdout }}_mxn_network_port_5', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('180', '{{ adc_tsg_sn.stdout }}_mxn_network_port_6', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('181', '{{ adc_tsg_sn.stdout }}_mxn_network_port_9', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('182', '{{ adc_tsg_sn.stdout }}_mxn_network_port_10', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('183', '{{ adc_tsg_sn.stdout }}_mxn_network_port_37', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('184', '{{ adc_tsg_sn.stdout }}_mxn_network_port_39', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('185', '{{ adc_tsg_sn.stdout }}_mxn_network_port_41', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('186', '{{ adc_tsg_sn.stdout }}_mxn_network_port_43', 'ifInOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('187', '{{ adc_tsg_sn.stdout }}_mxn_network_port_2', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('188', '{{ adc_tsg_sn.stdout }}_mxn_network_port_3', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('189', '{{ adc_tsg_sn.stdout }}_mxn_network_port_4', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('190', '{{ adc_tsg_sn.stdout }}_mxn_network_port_5', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('191', '{{ adc_tsg_sn.stdout }}_mxn_network_port_6', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('192', '{{ adc_tsg_sn.stdout }}_mxn_network_port_9', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('193', '{{ adc_tsg_sn.stdout }}_mxn_network_port_10', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('194', '{{ adc_tsg_sn.stdout }}_mxn_network_port_37', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('195', '{{ adc_tsg_sn.stdout }}_mxn_network_port_39', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('196', '{{ adc_tsg_sn.stdout }}_mxn_network_port_41', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('197', '{{ adc_tsg_sn.stdout }}_mxn_network_port_43', 'ifInUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('198', '{{ adc_tsg_sn.stdout }}_mxn_network_port_1', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('199', '{{ adc_tsg_sn.stdout }}_mxn_network_port_2', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('200', '{{ adc_tsg_sn.stdout }}_mxn_network_port_3', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('201', '{{ adc_tsg_sn.stdout }}_mxn_network_port_4', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('202', '{{ adc_tsg_sn.stdout }}_mxn_network_port_5', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('203', '{{ adc_tsg_sn.stdout }}_mxn_network_port_6', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('204', '{{ adc_tsg_sn.stdout }}_mxn_network_port_9', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('205', '{{ adc_tsg_sn.stdout }}_mxn_network_port_10', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('206', '{{ adc_tsg_sn.stdout }}_mxn_network_port_37', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('207', '{{ adc_tsg_sn.stdout }}_mxn_network_port_39', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('208', '{{ adc_tsg_sn.stdout }}_mxn_network_port_41', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('209', '{{ adc_tsg_sn.stdout }}_mxn_network_port_43', 'ifInErrors', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('210', '{{ adc_tsg_sn.stdout }}_mxn_network_port_1', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('211', '{{ adc_tsg_sn.stdout }}_mxn_network_port_2', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('212', '{{ adc_tsg_sn.stdout }}_mxn_network_port_3', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('213', '{{ adc_tsg_sn.stdout }}_mxn_network_port_4', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('214', '{{ adc_tsg_sn.stdout }}_mxn_network_port_5', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('215', '{{ adc_tsg_sn.stdout }}_mxn_network_port_6', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('216', '{{ adc_tsg_sn.stdout }}_mxn_network_port_9', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('217', '{{ adc_tsg_sn.stdout }}_mxn_network_port_10', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('218', '{{ adc_tsg_sn.stdout }}_mxn_network_port_37', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('219', '{{ adc_tsg_sn.stdout }}_mxn_network_port_39', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('220', '{{ adc_tsg_sn.stdout }}_mxn_network_port_41', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('221', '{{ adc_tsg_sn.stdout }}_mxn_network_port_43', 'ifOutOctets', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('222', '{{ adc_tsg_sn.stdout }}_mxn_network_port_1', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('223', '{{ adc_tsg_sn.stdout }}_mxn_network_port_2', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('224', '{{ adc_tsg_sn.stdout }}_mxn_network_port_3', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('225', '{{ adc_tsg_sn.stdout }}_mxn_network_port_4', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('226', '{{ adc_tsg_sn.stdout }}_mxn_network_port_5', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('227', '{{ adc_tsg_sn.stdout }}_mxn_network_port_6', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('228', '{{ adc_tsg_sn.stdout }}_mxn_network_port_9', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('229', '{{ adc_tsg_sn.stdout }}_mxn_network_port_10', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('230', '{{ adc_tsg_sn.stdout }}_mxn_network_port_37', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('231', '{{ adc_tsg_sn.stdout }}_mxn_network_port_39', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('232', '{{ adc_tsg_sn.stdout }}_mxn_network_port_41', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('233', '{{ adc_tsg_sn.stdout }}_mxn_network_port_43', 'ifOutUcastPkts', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('234', '{{ adc_tsg_sn.stdout }}_mxn_memory', 'memPercent', null, null, null, null, null, null);
+INSERT INTO `tsg_threshold` VALUES ('235', '{{ adc_tsg_sn.stdout }}_mcn0_memory', 'memPercent', '0.9', null, '0.8', null, '0.7', null);
+INSERT INTO `tsg_threshold` VALUES ('236', '{{ adc_tsg_sn.stdout }}_mcn1_memory', 'memPercent', '0.9', null, '0.8', null, '0.7', null);
+INSERT INTO `tsg_threshold` VALUES ('237', '{{ adc_tsg_sn.stdout }}_mcn2_memory', 'memPercent', '0.9', null, '0.8', null, '0.7', null);
+INSERT INTO `tsg_threshold` VALUES ('238', '{{ adc_tsg_sn.stdout }}_mcn3_memory', 'memPercent', '0.9', null, '0.8', null, '0.7', null);

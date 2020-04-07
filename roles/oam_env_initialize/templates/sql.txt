@@ -1,0 +1,1 @@
+mysql -s -h $host -u $user -p$passwd $dbname   < tsg_threshold.sql

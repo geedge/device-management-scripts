@@ -102,6 +102,6 @@
   shell: mysqladmin password {{ mariadb.password }}
 
 - name: "set mariadb privileges"
-  shell: mysql -uroot -p{{ mariadb.password }} -e "grant all privileges on *.* to root@'%' identified by '111111' with grant option;"
+  shell: mysql -uroot -p{{ mariadb.password }} -e "grant all privileges on *.* to root@'%' identified by 'tsg2019' with grant option;"
   shell: mysql -uroot -p{{ mariadb.password }} -e "flush privileges;"
 

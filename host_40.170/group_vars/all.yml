@@ -10,4 +10,5 @@ consul:
     internal_ethname: ens33
 
 mariadb:
-    password: 111111
+    username: root
+    password: tsg2019
