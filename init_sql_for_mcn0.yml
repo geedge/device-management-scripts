@@ -1,5 +1,0 @@
----
-- hosts: sled-mcn0
-  gather_facts: no
-  roles:
-    - oam_env_initialize

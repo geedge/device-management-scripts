@@ -1,50 +1,17 @@
 [all:vars]
 ansible_user=root
-use_chassis_hardware_sn=true
+use_chassis_hardware_sn=false
 rpm_file_name=tsg-cli-1.0.14.eccfd07-1.el7.x86_64.rpm
 
 [cluster_server]
-172.16.124.134
+192.168.40.210
 
 [blade-mxn]
-172.16.124.133
+192.168.40.170 SN=CBT2201925000003 mcn0_ip=192.168.40.166
 
-[blade-00]
-172.16.124.129 server_ip=172.16.124.133
+[blade-mcn0]
+192.168.40.166 server_ip=192.168.40.170
 
-[blade-01]
-172.16.124.130 server_ip=172.16.124.133
-
-[blade-02]
-172.16.124.131 server_ip=172.16.124.133
-
-[blade-03]
-172.16.124.132 server_ip=172.16.124.133
-
-[sled-mxn]
-172.16.124.133 SN=CBT2201925000003 mcn0_ip=172.16.124.129
-
-[sled-mcn0]
-172.16.124.129 SN=CBT2201925000003
-
-[sled-mcn1]
-172.16.124.130 SN=CBT2201925000003
-
-[sled-mcn2]
-172.16.124.131 SN=CBT2201925000003
-
-[sled-mcn3]
-172.16.124.132 SN=CBT2201925000003
-
-[Functional_Host:children]
-sled-mcn0
-sled-mcn1
-sled-mcn2
-sled-mcn3
-
-[tsg-all:children]
-sled-mxn
-sled-mcn0
-sled-mcn1
-sled-mcn2
-sled-mcn3
+[blade-mcn1]
+[blade-mcn2]
+[blade-mcn3]

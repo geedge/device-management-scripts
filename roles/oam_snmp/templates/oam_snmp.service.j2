@@ -1,0 +1,14 @@
+[Unit]
+Description=oam_snmp daemon
+
+[Service]
+Type=simple
+Environment=OAM_DIR=/opt/tsg/snmp/
+ExecStart=/usr/lib/jvm/{{ java_version }}/bin/java -jar -Doam.snmp.config=${OAM_DIR}application.properties ${OAM_DIR}oam_snmp.jar udp:0.0.0.0/50161
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Restart=always
+RestartSec=5s

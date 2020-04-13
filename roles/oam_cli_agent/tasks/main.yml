@@ -19,6 +19,11 @@
     dest: /usr/share/snmp/snmpd.conf
   tags: template
 
+- name: "Templates oam_cli_agent.service"
+  template:
+    src: "{{ role_path }}/templates/oam_cli_agent.service.j2"
+    dest: /usr/lib/systemd/system/oam_cli_agent.service
+
 - name: "Start snmpd"
   systemd:
     name: snmpd
@@ -30,3 +35,4 @@
     name: oam_cli_agent
     state: restarted
     enabled: yes
+    daemon_reload: yes

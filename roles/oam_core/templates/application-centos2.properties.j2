@@ -24,17 +24,20 @@ ipmi.fru.mcn3=ipmitool -t 0x88 fru
 network.data=/opt/tsg/oam_core/shell/network.sh
 
 # 本机influx和mariadb地址
-oam.local.server.ip={{ mcn0_ip }}
+oam.local.server.mariadb.ip={{ mcn0_ip }}
+oam.local.server.influxdb.ip={{ mcn0_ip }}
 # 集群influx和mariadb地址
-oam.cluster.server.ip={{ influxdb.cluster_ip }}
+oam.cluster.server.mariadb.ip={{ mariadb.cluster_ip }}
+oam.cluster.server.influxdb.ip={{ influxdb.cluster_ip }}
+
 # influxdb端口
 oam.influx.port=58086
 
 # influxdb - cluster
-oam.writer.influxcluster.db=tsg_stat
+oam.writer.influxcluster.db={{ influxdb.dbname }}
 
 # datasource - local
-datasource.first.password=tsg2019
+datasource.first.password={{ influxdb.passwd }}
 
 # datasource - cluster
 datasource.second.username=root

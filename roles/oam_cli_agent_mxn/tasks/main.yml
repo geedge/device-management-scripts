@@ -9,8 +9,14 @@
       - /tmp/oam_cli_agent_mxn-1.0-1.0.x86_64.rpm
     state: present
 
-- name: "Start oam_cli_agent_mxn"
-  systemd:
-    name: oam_cli_agent_mxn
-    state: restarted
-    enabled: yes
+- name: "Templates oam_cli_agent_mxn.service"
+  template:
+    src: "{{ role_path }}/templates/oam_cli_agent_mxn.service.j2"
+    dest: /usr/lib/systemd/system/oam_cli_agent_mxn.service
+
+#- name: "Start oam_cli_agent_mxn"
+#  systemd:
+#    name: oam_cli_agent_mxn
+#    state: restarted
+#    enabled: yes
+#    daemon_reload: yes

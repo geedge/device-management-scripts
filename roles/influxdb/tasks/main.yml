@@ -21,11 +21,15 @@
     state: restarted
     enabled: yes
 
-- name: "script set_influxdb_cluster.sh"
-  script: "{{role_path}}//files/set_influxdb_cluster.sh"
-  when: influxdb.cluster_agent == "yes"
+- name: "create database"
+  shell: influx -host '127.0.0.1' -port '58086'  -execute 'create database tsg_stat;'
 
-- name: "script set_influxdb_blade00.sh"
-  script: "{{role_path}}//files/set_influxdb_blade00.sh"
-  when: influxdb.mcn0_agent == "yes"
+- name: "create user"
+  shell: influx -host '127.0.0.1' -port '58086' -database 'tsg_stat' -execute "create user "admin" with password 'tsg2019' with all privileges"
+
+- name: "set cluster influxdb retention policy"
+  shell: influx -port 58086 -execute 'CREATE RETENTION POLICY "1_year" ON "tsg_stat" DURATION 365d REPLICATION 1 DEFAULT'
+
+- name: "set mcn0 influxdb retention policy"
+  shell: influx -port 58086 -execute 'CREATE RETENTION POLICY "1_day" ON "tsg_stat" DURATION 1d REPLICATION 1 DEFAULT'
 

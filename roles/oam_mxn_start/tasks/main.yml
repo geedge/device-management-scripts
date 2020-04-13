@@ -1,0 +1,28 @@
+- name: "Start oam_cli_agent_mxn"
+  systemd:
+    name: oam_cli_agent_mxn
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+
+- name: "kill all snmp"
+  shell: ps axf | grep snmp |grep -v grep  |awk '{print $1}' | xargs kill
+
+- name: "Start snmpd"
+  shell: /usr/sbin/snmpd -C -c /usr/share/snmp/snmpd.conf
+
+- name: "Start oam_snmp"
+  systemd:
+    name: oam_snmp
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+
+- name: "Start oam_core"
+  systemd:
+    name: oam_core
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+
+

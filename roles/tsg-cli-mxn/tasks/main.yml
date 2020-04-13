@@ -47,7 +47,7 @@
   when: not use_chassis_hardware_sn | bool 
 
 - name: "copy tsg_sn.json to destination server"
-  synchronize:
+  copy:
     src: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
     dest: "/opt/tsg/etc/tsg_sn.json"
   when: use_chassis_hardware_sn | bool 

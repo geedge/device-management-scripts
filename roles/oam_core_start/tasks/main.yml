@@ -1,5 +1,0 @@
-- name: "Start oam_core"
-  systemd:
-    name: oam_core
-    state: restarted
-    enabled: yes

@@ -15,3 +15,8 @@
     src: "{{role_path}}/templates/application-centos2.properties.j2"
     dest: /opt/tsg/oam_core/application-centos2.properties
   tags: template
+
+- name: "Templates oam_core.service"
+  template:
+    src: "{{ role_path }}/templates/oam_core.service.j2"
+    dest: /usr/lib/systemd/system/oam_core.service

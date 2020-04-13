@@ -1,6 +1,5 @@
 oam.influx.url=http://{{ mcn0_ip }}:58086
-# oam.influx.url=http://192.168.161.134:8086
-oam.influx.db=tsg_stat
-oam.influx.user=admin
-oam.influx.password=tsg2019
+oam.influx.db={{ influxdb.dbname }}
+oam.influx.user={{ influxdb.userbname }}
+oam.influx.password={{ influxdb.passwd }}
 oam.influx.recentminutes=5

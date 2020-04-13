@@ -1,7 +1,0 @@
-influxdb:
-    cluster_agent: "yes"
-    mcn0_agent: "no"
-    meta_dir: /var/lib/influxdb/meta
-    data_dir: /var/lib/influxdb/data
-    wal_dir: /var/lib/influxdb/wal-dir
-

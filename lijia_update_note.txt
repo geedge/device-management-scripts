@@ -1,4 +1,0 @@
-2020-03-13 lijia update
-1-更新oam, tsg-cli模块的rpm包
-2-修改roles/oam_cli/tasks/main.yml, Templates application.properties的路径错误.
-3-修改roles/oam_core/task目录名称错误，改为tasks.

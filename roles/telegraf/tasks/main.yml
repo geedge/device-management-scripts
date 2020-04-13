@@ -6,7 +6,7 @@
 - name: "install telegraf"
   yum:
     name:
-      - /tmp/telegraf-1.11.4-1.x86_64.rpm
+      - /tmp/telegraf-1.13.0-1.x86_64.rpm
     state: present
 
 - name: "Templates telegraf.conf"

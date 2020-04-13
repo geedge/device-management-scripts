@@ -15,24 +15,18 @@
     dest: /opt/tsg/snmp/application.properties
   tags: template
 
-- name: "Start oam_snmp"
-  systemd:
-    name: oam_snmp
-    state: restarted
-    enabled: yes
+- name: "Templates oam_snmp.service"
+  template:
+    src: "{{ role_path }}/templates/oam_snmp.service.j2"
+    dest: /usr/lib/systemd/system/oam_snmp.service
 
-- name: "bak snmpd.conf"
-  shell: cp -rf /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf_origin
+- name: "mkdir /etc/snmp"
+  file:
+    path: /etc/snmp
+    state: directory
 
 - name: "Templates snmpd.conf"
   template:
     src: "{{role_path}}/templates/snmpd.conf"
     dest: /etc/snmp/snmpd.conf
   tags: template
-
-#- name: "Start snmpd"
-#  systemd:
-#    name: snmpd
-#    state: restarted
-#    enabled: yes
-#  ignore_errors: yes
