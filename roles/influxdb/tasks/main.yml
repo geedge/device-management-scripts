@@ -21,15 +21,17 @@
     state: restarted
     enabled: yes
 
-- name: "create database"
-  shell: influx -host '127.0.0.1' -port '58086'  -execute 'create database tsg_stat;'
-
 - name: "create user"
-  shell: influx -host '127.0.0.1' -port '58086' -database 'tsg_stat' -execute "create user "admin" with password 'tsg2019' with all privileges"
+  shell: influx -host '127.0.0.1' -port '58086' -database '{{ influxdb.dbname }}' -execute "create user "{{ influxdb.username }}" with password '{{ influxdb.passwd }}' with all privileges"
+
+- name: "create database"
+  shell: influx -host '127.0.0.1' -port '58086' -username '{{ influxdb.username }}' -password '{{ influxdb.passwd }}' -execute 'create database {{ influxdb.dbname }};'
 
 - name: "set cluster influxdb retention policy"
-  shell: influx -port 58086 -execute 'CREATE RETENTION POLICY "1_year" ON "tsg_stat" DURATION 365d REPLICATION 1 DEFAULT'
+  shell: influx -host '127.0.0.1' -port '58086' -username '{{ influxdb.username }}' -password '{{ influxdb.passwd }}' -execute 'CREATE RETENTION POLICY "1_year" ON "tsg_stat" DURATION 365d REPLICATION 1 DEFAULT'
+  when: influxdb_cluster is defined 
 
 - name: "set mcn0 influxdb retention policy"
-  shell: influx -port 58086 -execute 'CREATE RETENTION POLICY "1_day" ON "tsg_stat" DURATION 1d REPLICATION 1 DEFAULT'
+  shell: influx -host '127.0.0.1' -port '58086' -username '{{ influxdb.username }}' -password '{{ influxdb.passwd }}' -execute 'CREATE RETENTION POLICY "1_day" ON "tsg_stat" DURATION 1d REPLICATION 1 DEFAULT'
+  when: influxdb_cluster is not defined
 

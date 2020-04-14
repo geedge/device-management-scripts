@@ -1,4 +1,0 @@
-influxdb:
-    cluster_agent: "yes"
-    mcn0_agent: "no"
-
