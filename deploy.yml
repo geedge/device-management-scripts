@@ -5,7 +5,7 @@
 - hosts: cluster_server
   roles:
     - consul-cluster
-    - mariadb
+    #- mariadb
     - influxdb
 
 - hosts: blade-mxn
@@ -20,12 +20,12 @@
 
 - hosts: blade-mcn0
   roles:
-    - mariadb
     - consul-internal
     - telegraf
     - influxdb
     - grafana
     - tsg-cli-mcn0
+    - mariadb
     - oam_cli_agent
 
 - hosts: blade-mcn1

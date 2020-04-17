@@ -1,8 +1,14 @@
+- name: "judge mariadb status"
+  shell: systemctl status mariadb.service
+  register: return
+  ignore_errors: true
+
 - name: "del mysql user"
   user:
     name: mysql
     state: absent
     remove: yes
+  when: return.rc != 0
 
 - name: "del mariadb|mysql"
   yum:
@@ -11,19 +17,23 @@
   yum:
     name: mariadb
     state: removed
+  when: return.rc != 0
 
 - name: "copy mysql.zip"
   synchronize:
     src: "{{ role_path }}/files/"
     dest: "/tmp/"
+  when: return.rc != 0
 
 - name: "add mysql user"
   shell: useradd mysql -s /sbin/nologin -M
+  when: return.rc != 0
 
 - name: "mkdir /home/database/"
   file:
     path: /home/database
     state: directory
+  when: return.rc != 0
 
 - name: "mkdir /home/database/dbdata/"
   file:
@@ -31,6 +41,7 @@
     state: directory
     owner: mysql
     group: mysql
+  when: return.rc != 0
 
 - name: "mkdir /var/lib/mysql/"
   file:
@@ -39,57 +50,69 @@
     owner: mysql
     group: mysql
     mode: 1777
+  when: return.rc != 0
 
 - name: "mkdir /etc/mysql/"
   file:
     path: /etc/mysql/
     state: directory
-
+  when: return.rc != 0
+  
 - name: "mkdir /var/log/mariadb/"
   file:
     path: /var/log/mariadb/
     state: directory
+  when: return.rc != 0
 
 - name: "set /tmp permission 1777"
   shell: chmod 1777 /tmp
+  when: return.rc != 0
 
 - name: "unarchive mariadb"
   unarchive:
     src: "/tmp/mysql.zip"
     dest: "/home/database/"
     copy: no
+  when: return.rc != 0
 
 - name: "install libaio-devel"
   yum:
     name:
       - /tmp/libaio-devel-0.3.109-13.el7.x86_64.rpm
     state: present
+  when: return.rc != 0
 
 - name: "init mariadb"
   shell: cd /home/database/mysql/scripts;./mysql_install_db --basedir=/home/database/mysql --datadir=/home/database/dbdata --user=mysql
+  when: return.rc != 0
 
 - name: "set my.cnf"
   copy:
     src: "{{ role_path }}/files/my.cnf"
     dest: "/etc/mysql/my.cnf"
+  when: return.rc != 0
 
 - name: "copy mariadb"
   copy:
     src: "{{ role_path }}/files/mariadb"
     dest: "/etc/init.d/"
     mode: 0755
+  when: return.rc != 0
 
-- name: "copy mariadb.service"
+- name: "copy mariadb_mcn0.service"
   copy:
-    src: "{{ role_path }}/files/mariadb.service"
+    src: "{{ role_path }}/files/mariadb_mcn0.service"
     dest: "/usr/lib/systemd/system/"
     mode: 0755
+  when: return.rc != 0
 
 - name: "copy mysql"
   shell: cp -rf /home/database/mysql/bin/mysql /usr/local/bin
+  when: return.rc != 0
 
 - name: "copy mysqladmin"
   shell: cp -rf /home/database/mysql/bin/mysqladmin /usr/local/bin
+  when: return.rc != 0
 
 - name: "start and enable mariadb"
   systemd:
@@ -97,28 +120,34 @@
     state: started
     enabled: yes
     daemon_reload: yes
+  when: return.rc != 0
 
 - name: "set mariadb password"
   shell: mysqladmin password {{ mariadb.password }}
+  when: return.rc != 0
 
 - name: "set mariadb privileges"
   shell: mysql -uroot -p{{ mariadb.password }} -e "grant all privileges on *.* to root@'%' identified by 'tsg2019' with grant option;"
   shell: mysql -uroot -p{{ mariadb.password }} -e "flush privileges;"
   shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
+  when: return.rc != 0
 
 - name: "get remote tsg sn"
   shell: cat /opt/tsg/etc/tsg_sn.json | grep sn | awk -F "\"" {'print $4'}
   register: adc_tsg_sn
+  when: return.rc != 0
 
 - name: "Templates tsg_threshold.sql"
   template:
     src: "{{role_path}}/templates/tsg_threshold.sql.j2"
     dest: /tmp/tsg-cli-deploy/tsg_threshold.sql
   tags: template
-
+  when: return.rc != 0
 
 - name: "debug show tsg_sn"
   debug: var=adc_tsg_sn.stdout
+  when: return.rc != 0
 
 - name: "import the sql after template"
   shell: mysql -s -h 127.0.0.1 -u {{ mariadb.username }} -p{{ mariadb.password }}  < /tmp/tsg-cli-deploy/tsg_threshold.sql
+  when: return.rc != 0

@@ -7,7 +7,7 @@ rpm_file_name=tsg-cli-1.0.14.eccfd07-1.el7.x86_64.rpm
 192.168.40.210 influxdb_cluster=true
 
 [blade-mxn]
-192.168.40.170 SN=CBT2201925000003 mcn0_ip=192.168.40.166
+192.168.40.170 mcn0_ip=192.168.40.166
 
 [blade-mcn0]
 192.168.40.166 server_ip=192.168.40.170
