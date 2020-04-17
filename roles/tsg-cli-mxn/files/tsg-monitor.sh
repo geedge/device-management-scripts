@@ -9,6 +9,8 @@ killall_uncompleted_cmd(){
     killall -9 -q tsg_cluster_register
     #killall -9 -q tsg_diagnose_background
     killall -9 -q tsg_update_tags
+	
+	rm -rf /tmp/_MEI*
 }
 
 start_background_cmd(){
@@ -68,7 +70,7 @@ while [ 1 ]; do
     #echo tsg-monitor start at `date +"%Y/%m/%d, %H:%M:%S.%N"` >> /tmp/tsg-monitor.log
    
     start_background_cmd 
-    sleep 10
+    sleep 13
     killall_uncompleted_cmd
     
     sleep_for_time_ms $start_time 15000
