@@ -99,9 +99,9 @@
     mode: 0755
   when: return.rc != 0
 
-- name: "copy mariadb_mcn0.service"
+- name: "copy mariadb.service"
   copy:
-    src: "{{ role_path }}/files/mariadb_mcn0.service"
+    src: "{{ role_path }}/files/mariadb.service"
     dest: "/usr/lib/systemd/system/"
     mode: 0755
   when: return.rc != 0
@@ -127,7 +127,7 @@
   when: return.rc != 0
 
 - name: "set mariadb privileges"
-  shell: mysql -uroot -p{{ mariadb.password }} -e "grant all privileges on *.* to root@'%' identified by 'tsg2019' with grant option;"
+  shell: mysql -uroot -p{{ mariadb.password }} -e "grant all privileges on *.* to root@'%' identified by '111111' with grant option;"
   shell: mysql -uroot -p{{ mariadb.password }} -e "flush privileges;"
   shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
   when: return.rc != 0

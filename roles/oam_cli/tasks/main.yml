@@ -12,5 +12,5 @@
 - name: "Templates application.properties"
   template:
     src: "{{role_path}}/templates/application.properties.j2"
-    dest: /opt/tsg/cli/application.properties
+    dest: /home/tsgroot/opt/tsg/cli/application.properties
   tags: template

@@ -1,0 +1,108 @@
+spring.profiles.active=centos2
+server.port=50080
+
+cli.agent.port=50222
+
+config.dir=C:/work/codes/oam/cli-common/config
+sn.config=${config.dir}/tsg_sn.json
+mxn.config=${config.dir}/tsg_chassis_ip.json
+tags.config=${config.dir}/tsg_tags.json
+port.config=${config.dir}/tsg_chassis_port.json
+mxn.dir=C:/work/codes/oam/cli-cmd/shell/
+mxn.tsg_software_reboot=${mxn.dir}tsg_software_reboot.bat
+mxn.tsg_hardware_reboot=${mxn.dir}tsg_hardware_reboot.bat
+
+shell.dir=C:/work/codes/oam/oam-rest/shell/
+ipmi.sensor.mxn=${shell.dir}ipmi_sensor.bat
+ipmi.sensor.mcn0=${shell.dir}ipmi_sensor_mcn0.bat
+ipmi.sensor.mcn1=${shell.dir}ipmi_sensor_mcn1.bat
+ipmi.sensor.mcn2=${shell.dir}ipmi_sensor_mcn2.bat
+ipmi.sensor.mcn3=${shell.dir}ipmi_sensor_mcn3.bat
+ipmi.fru.mxn=${shell.dir}ipmi_fru.bat
+ipmi.fru.mcn0=${shell.dir}ipmi_fru_mcn0.bat
+ipmi.fru.mcn1=${shell.dir}ipmi_fru_mcn1.bat
+ipmi.fru.mcn2=${shell.dir}ipmi_fru_mcn2.bat
+ipmi.fru.mcn3=${shell.dir}ipmi_fru_mcn3.bat
+network.data=${shell.dir}network_data.bat
+# 本机influx和mariadb地址
+oam.local.server.mariadb.ip=192.168.100.1
+oam.local.server.influxdb.ip=192.168.100.1
+# 集群influx和mariadb地址
+oam.cluster.server.mariadb.ip={{ mariadb.cluster_ip }}
+oam.cluster.server.influxdb.ip={{ influxdb.cluster_ip }}
+
+# influxdb端口
+oam.influx.port=58086
+
+#oam.writer.snmp.ip=202.43.148.184
+oam.writer.snmp.ip=127.0.0.1
+oam.writer.snmp.port=161
+oam.writer.snmp.version=0
+oam.writer.snmp.community=public
+oam.writer.influx.url=http://${oam.local.server.influxdb.ip}:${oam.influx.port}
+oam.writer.influx.db={{ influxdb.dbname }}
+oam.writer.influx.user={{ influxdb.username }}
+oam.writer.influx.password={{ influxdb.passwd }}
+
+oam.writer.influxcluster.url=http://${oam.cluster.server.influxdb.ip}:${oam.influx.port}
+oam.writer.influxcluster.db=tsg_cluster
+oam.writer.influxcluster.user={{ influxdb.username }}
+oam.writer.influxcluster.password={{ influxdb.passwd }}
+
+oam.writer.scheduler.interval=60000
+oam.writer.scheduler.ipmi.interval=180000
+oam.alarm.loc.scheduler.interval=60000
+oam.alarm.loc.syn.limit=1800000
+oam.writer.scheduler.pool.size=30
+
+
+
+
+# centos上的系统日志文件：/var/log/messages
+oam.syslog.dir=C:/work/codes/oam/oam-rest/syslog
+oam.syslog.file=messages
+# 系统日志最近处理时间保存文件
+oam.syslog.time.file=C:/work/codes/oam/oam-rest/syslog/syslog_time.txt
+
+# datasource - first
+datasource.first.jdbc-url=jdbc:mysql://${oam.local.server.mariadb.ip}/tsg_oam?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+datasource.first.username={{ mariadb.username }}
+datasource.first.password={{ mariadb.password }}
+datasource.first.driver-class-name=com.mysql.jdbc.Driver
+datasource.first.configuration.maximum-pool-size=30
+
+# datasource - second
+datasource.second.jdbc-url=jdbc:mysql://${oam.cluster.server.mariadb.ip}/tsg_cluster?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+datasource.second.username={{ mariadb.username }}
+datasource.second.password={{ mariadb.password }}
+datasource.second.driver-class-name=com.mysql.jdbc.Driver
+datasource.second.configuration.maximum-pool-size=30
+
+# hibernate
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.properties.hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+spring.jpa.properties.hibernate.show_sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.hbm2ddl.auto=update
+
+# log
+logging.file=oam-rest.log
+# logging.level.root=ERROR
+# logging.level.com.cs.oam=ERROR
+logging.file.max-size=10MB
+logging.file.max-history=10
+
+# Absolute path
+oam.rest.oam_core=D:/IDEA/idea-project/oam/oam-rest/src/main/resources/application.properties
+oam.rest.oam_snmp=D:/IDEA/idea-project/oam/oam/oam-snmp4j/src/main/resources/application.properties
+oam.rest.cli_agent=D:/IDEA/idea-project/oam/oam/cli-agent/src/main/resources/application-centos2.properties
+oam.rest.cli=D:/IDEA/idea-project/oam/oam/oam-cmd/src/main/resources/config.properties
+
+# trap configuration parameter
+oam.alarm.trap.polling.interval=120000
+oam.alarm.trap.range=86400000
+oam.alarm.trap.ipport={{ oam.snmptrapd_ip }}:{{ oam.snmptrapd_port }}
+oam.alarm.trap.public=public
+oam.snmp.version=3
+oam.snmp.username=tsgadmin
+oam.snmp.password=cli202001

@@ -1,6 +1,6 @@
 - name: "copy oam_snmp.rpm to destination server"
   copy:
-    src: "{{ role_path }}/files/"
+    src: "{{ role_path }}/files/oam_snmp-1.0-1.0.x86_64.rpm"
     dest: /tmp
 
 - name: "install oam_snmp"
@@ -25,8 +25,12 @@
     path: /etc/snmp
     state: directory
 
-- name: "Templates snmpd.conf"
-  template:
-    src: "{{role_path}}/templates/snmpd.conf"
-    dest: /etc/snmp/snmpd.conf
-  tags: template
+- name: "copy snmpd.conf"
+  copy:
+    src: "{{role_path}}/files/snmpd.conf"
+    dest: /etc/snmp/
+
+- name: "copy snmptrapd conf"
+  copy:
+    src: "{{role_path}}/files/snmptrapd.conf"
+    dest: /etc/snmp/

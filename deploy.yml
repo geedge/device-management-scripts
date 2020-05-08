@@ -1,12 +1,12 @@
 - hosts: all
   roles:
-    - jdk1.8.0_73
+    #- jdk1.8.0_73
 
 - hosts: cluster_server
   roles:
-    - consul-cluster
+    #- consul-cluster
     #- mariadb
-    - influxdb
+    #- influxdb
 
 - hosts: blade-mxn
   roles:
@@ -20,29 +20,29 @@
 
 - hosts: blade-mcn0
   roles:
-    - consul-internal
+    - consul-internal_mcn01
     - telegraf
     - influxdb
     - grafana
     - tsg-cli-mcn0
-    - mariadb
+    #- mariadb
     - oam_cli_agent
 
 - hosts: blade-mcn1
   roles:
-    - consul-internal
+    - consul-internal_mcn01
     - tsg-cli-mcn1
     - oam_cli_agent
 
 - hosts: blade-mcn2
   roles:
-    - consul-internal
+    - consul-internal_mcn23
     - tsg-cli-mcn2
     - oam_cli_agent
 
 - hosts: blade-mcn3
   roles:
-    - consul-internal
+    - consul-internal_mcn23
     - tsg-cli-mcn3
     - oam_cli_agent
 

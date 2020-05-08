@@ -2,7 +2,7 @@ grafana:
     http_port: 53000
 
 influxdb:
-    cluster_ip: "192.168.40.210" 
+    cluster_ip: "10.3.60.8" 
     dbname: tsg_stat
     username: admin
     passwd: tsg2019
@@ -11,18 +11,22 @@ influxdb:
     wal_dir: /var/lib/influxdb/wal-dir
 
 consul:
-    datacenter: consul-xxg
+    datacenter: consul-yz
     dckey: "XwXLAbVN1C44dLUVJ6UL5A=="
-    cluster_ip: "192.168.40.210"
-    cluster_ethname: ens33
+    cluster_ip: "10.3.60.8"
+    cluster_ethname: em1
     external_ethname: enp2s0
-    internal_ethname: enp6s0
+    mcn01_internal_ethname: ens1f3
+    mcn23_internal_ethname: ens8f3
 
 mariadb:
     username: root
     password: 111111
-    cluster_ip: "192.168.40.210"
+    cluster_ip: "10.3.60.7"
+
+oam:
+    snmptrapd_ip: "127.0.0.1"
+    snmptrapd_port: 162
 
 java_version: jdk1.8.0_73
-bifang_api_ip: "192.168.40.4"
-SN: CBT2201925000003
+bifang_api_ip: "10.3.60.7"
