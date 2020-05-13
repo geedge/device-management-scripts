@@ -17,7 +17,7 @@ oam.influx.password={{ influxdb.passwd }}
 oam.cli.user.admin=tsgadmin
 oam.cli.user.user=tsguser
 
-cli.rest.root=http://{{ bifang_api_ip }}:8080/v1
+cli.rest.root=http://{{ bifang_api_ip }}:{{ bifang_api_port }}/v1
 cli.rest.login=${cli.rest.root}/user/login
 cli.rest.policy=${cli.rest.root}/policy/compile
 cli.rest.policy.object=${cli.rest.root}/policy/object

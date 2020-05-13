@@ -37,11 +37,11 @@ oam.influx.port=58086
 oam.writer.influxcluster.db={{ influxdb.dbname }}
 
 # datasource - local
-datasource.first.password={{ influxdb.passwd }}
+datasource.first.password={{ mariadb.password }}
 
 # datasource - cluster
-datasource.second.username=root
-datasource.second.password=111111
+datasource.second.username={{ mariadb.username }}
+datasource.second.password={{ mariadb.password }}
 
 
 oam.writer.scheduler.interval=60000

@@ -30,3 +30,4 @@ oam:
 
 java_version: jdk1.8.0_73
 bifang_api_ip: "10.3.60.7"
+bifang_api_port: 8080

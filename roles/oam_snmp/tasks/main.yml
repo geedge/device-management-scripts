@@ -29,8 +29,10 @@
   copy:
     src: "{{role_path}}/files/snmpd.conf"
     dest: /etc/snmp/
+    mode: 0755
 
 - name: "copy snmptrapd conf"
   copy:
     src: "{{role_path}}/files/snmptrapd.conf"
     dest: /etc/snmp/
+    mode: 0755
