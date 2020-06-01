@@ -24,3 +24,9 @@
   template:
     src: "{{ role_path }}/templates/oam_core.service.j2"
     dest: /usr/lib/systemd/system/oam_core.service
+
+- name: "copy /usr/local/bin/mysql to destination server"
+  copy:
+    src: "{{ role_path }}/files/mysql"
+    dest: /usr/local/bin
+    mode: 0755

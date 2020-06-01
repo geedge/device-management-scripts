@@ -129,25 +129,5 @@
 - name: "set mariadb privileges"
   shell: mysql -uroot -p{{ mariadb.password }} -e "grant all privileges on *.* to root@'%' identified by '111111' with grant option;"
   shell: mysql -uroot -p{{ mariadb.password }} -e "flush privileges;"
-  shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
   when: return.rc != 0
 
-- name: "get remote tsg sn"
-  shell: cat /opt/tsg/etc/tsg_sn.json | grep sn | awk -F "\"" {'print $4'}
-  register: adc_tsg_sn
-  when: return.rc != 0
-
-- name: "Templates tsg_threshold.sql"
-  template:
-    src: "{{role_path}}/templates/tsg_threshold.sql.j2"
-    dest: /tmp/tsg-cli-deploy/tsg_threshold.sql
-  tags: template
-  when: return.rc != 0
-
-- name: "debug show tsg_sn"
-  debug: var=adc_tsg_sn.stdout
-  when: return.rc != 0
-
-- name: "import the sql after template"
-  shell: mysql -s -h 127.0.0.1 -u {{ mariadb.username }} -p{{ mariadb.password }}  < /tmp/tsg-cli-deploy/tsg_threshold.sql
-  when: return.rc != 0

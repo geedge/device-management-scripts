@@ -1,0 +1,17 @@
+- name: "judge tsg_oam"
+  shell: mysql -uroot -p111111  -e "show databases;" |grep tsg_oam
+  register: return
+  ignore_errors: true
+
+- name: "set tsg_oam database"
+  shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
+  when: return.rc != 0
+
+- name: "Templates tsg_threshold.sql"
+  template:
+    src: "{{role_path}}/templates/tsg_threshold.sql.j2"
+    dest: /tmp/tsg-cli-deploy/tsg_threshold.sql
+  tags: template
+
+- name: "import the sql after template"
+  shell: mysql -s -h 127.0.0.1 -u {{ mariadb.username }} -p{{ mariadb.password }}  < /tmp/tsg-cli-deploy/tsg_threshold.sql
