@@ -85,12 +85,15 @@ spring.jpa.properties.hibernate.show_sql=true
 spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.properties.hibernate.hbm2ddl.auto=update
 
+#alarm stategy, 1:每次都生成一条新的告警; 2:如果有相同告警, 则更新, 如果没有则新生成一条.
+oam.alarm.strategy=2
+
 # log
 logging.file=oam-rest.log
 # logging.level.root=ERROR
 # logging.level.com.cs.oam=ERROR
 logging.file.max-size=10MB
-logging.file.max-history=10
+logging.file.max-history=7
 
 # Absolute path
 oam.rest.oam_core=D:/IDEA/idea-project/oam/oam-rest/src/main/resources/application.properties

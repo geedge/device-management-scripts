@@ -8,7 +8,7 @@
 killall_uncompleted_cmd(){
     killall -9 -q tsg_cluster_register
     #killall -9 -q tsg_diagnose_background
-    killall -9 -q tsg_update_tags
+    #killall -9 -q tsg_update_tags
 	
 	rm -rf /tmp/_MEI*
 }
@@ -21,7 +21,7 @@ start_background_cmd(){
     #mxn板只检测cpu, mem, disk等, 前台cli命令启用diagnose,
     #后台服务依靠oam snmp模块, 无需运行tsg_diagnose_background
     #/opt/tsg/tsg-monitor/tsg_diagnose_background &
-    /opt/tsg/tsg-monitor/tsg_update_tags > /dev/null &
+    #/opt/tsg/tsg-monitor/tsg_update_tags > /dev/null &
 }
 
 #return value: current time in ms

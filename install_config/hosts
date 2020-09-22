@@ -1,27 +1,21 @@
 [all:vars]
 ansible_user=root
 use_chassis_hardware_sn=false
-rpm_file_name=tsg-cli-1.0.14.eccfd07-1.el7.x86_64.rpm
 
 [cluster_server]
-10.3.60.8 influxdb_cluster=true
+127.0.0.1 influxdb_cluster=true
 
 [blade-mxn]
-10.3.72.1 SN=CBT2201925000001 mcn0_ip=10.3.73.1
-10.3.72.2 SN=CBT2201925000002 mcn0_ip=10.3.73.2
+192.168.40.25 SN=CBT2201925000002 tag_location=xinxigang
 
 [blade-mcn0]
-10.3.73.1 SN=CBT2201925000001 server_ip=10.3.72.1
-10.3.73.2 SN=CBT2201925000002 server_ip=10.3.72.2
+192.168.40.21 SN=CBT2201925000002 tag_location=xinxigang
 
 [blade-mcn1]
-10.3.74.1 SN=CBT2201925000001 server_ip=10.3.72.1
-10.3.74.2 SN=CBT2201925000002 server_ip=10.3.72.2
+192.168.40.22 SN=CBT2201925000002 tag_location=xinxigang
 
 [blade-mcn2]
-10.3.75.1 SN=CBT2201925000001 server_ip=10.3.72.1
-10.3.75.2 SN=CBT2201925000002 server_ip=10.3.72.2
+192.168.40.23 SN=CBT2201925000002 tag_location=xinxigang
 
 [blade-mcn3]
-10.3.76.1 SN=CBT2201925000001 server_ip=10.3.72.1
-10.3.76.2 SN=CBT2201925000002 server_ip=10.3.72.2
+192.168.40.24 SN=CBT2201925000002 tag_location=xinxigang

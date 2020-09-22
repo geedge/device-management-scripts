@@ -8,7 +8,7 @@
 killall_uncompleted_cmd(){
     #killall -9 -q tsg_cluster_register
     killall -9 -q tsg_diagnose_background
-    killall -9 -q tsg_update_tags
+    #killall -9 -q tsg_update_tags
     killall -9 -q tsg_monit_interface
     killall -9 -q tsg_monit_intercept
 	
@@ -19,7 +19,7 @@ start_background_cmd(){
     #后台并发运行, 保证所有命令的开始运行时间基本一样，
     #且不会因某个命令网络拥塞、执行时间长等问题，阻塞while(1)主循环
     /opt/tsg/tsg-monitor/tsg_diagnose_background > /dev/null &
-    /opt/tsg/tsg-monitor/tsg_update_tags > /dev/null &
+    #/opt/tsg/tsg-monitor/tsg_update_tags > /dev/null &
     /opt/tsg/tsg-monitor/tsg_monit_interface > /dev/null &
 	/opt/tsg/tsg-monitor/tsg_monit_intercept > /dev/null &
 }
