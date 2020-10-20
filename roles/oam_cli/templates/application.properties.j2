@@ -9,7 +9,7 @@ tags.config=/opt/tsg/etc/tsg_tags.json
 cli.agent.port=50222
 
 # oam.influx.url=http://192.168.161.134:8086
-oam.influx.url=http://{{ mcn0_ip }}:58086
+oam.influx.url=http://{{ oam.mcn0_ip }}:58086
 oam.influx.db={{ influxdb.dbname }}
 oam.influx.user={{ influxdb.username }}
 oam.influx.password={{ influxdb.passwd }}

@@ -1,0 +1,84 @@
+#!/bin/bash
+
+#running:0,  stop:3
+CONSUL_STATE=0
+OAM_CLUSTER_STATE=0
+INFLUXDB_STATE=0
+
+check_consul_state(){
+    CONSUL_STATE=$(systemctl status oam_cluster.service)
+	if [ $CONSUL_STATE -ne 0 ]
+	then	
+		return 1
+	else 
+		return 0
+	fi
+}
+
+check_oam_cluster_state(){
+    OAM_CLUSTER_STATE=$(systemctl status oam_cluster.service)
+	if [ $OAM_CLUSTER_STATE -ne 0 ]
+	then	
+		return 1
+	else 
+		return 0
+	fi
+}
+
+check_influxdb_state(){
+    INFLUXDB_STATE=$(systemctl status influxd.service)
+	if [ $INFLUXDB_STATE -ne 0 ]
+	then	
+		return 1
+	else 
+		return 0
+	fi	
+}
+
+
+
+#return value: 0:succ; 1:error
+check_service_health(){
+    state = check_consul_state()
+	if [ $state -ne 0 ]
+	then 
+	    echo "consul service fail!"
+		return 1
+	fi
+
+    state = check_oam_cluster_state()
+	if [ $state -ne 0 ]
+	then 
+	    echo "oam_cluster service fail!"
+		return 1
+	fi
+
+    state = check_influxdb_state()
+	if [ $state -ne 0 ]
+	then 
+	    echo "influxd service fail!"
+		return 1
+	fi
+
+	return 0
+}
+
+
+check_service_health()
+if [ $? ne 0]
+then
+
+fi
+
+
+
+#检查到错误且重启之后, 再检查一遍
+check_service_health()
+if [ $? ne 0]
+then
+    echo "check service health fail!"
+    exit 1
+else 
+	echo "check service health succ!"
+    exit 0	
+fi

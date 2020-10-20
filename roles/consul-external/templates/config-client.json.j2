@@ -1,0 +1,9 @@
+{
+	"server" : false,
+	"datacenter" : "{{ consul.datacenter }}",
+	"data_dir" : "/var/consul-external",
+	"encrypt" : "{{ consul.dckey }}",
+	"disable_update_check" : true,
+	"retry_join" : ["{{ consul.cluster_ip }}","{{ consul.cluster_ip_backup }}"],
+	"retry_interval" : "10s"
+}

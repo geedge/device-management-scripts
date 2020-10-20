@@ -23,6 +23,13 @@
     password = "{{ influxdb.passwd }}"
 
 [[outputs.influxdb]]
+    urls = ["http://{{ influxdb.cluster_ip_backup }}:58086"]
+    database = "{{ influxdb.dbname }}"
+    # HTTP Basic Auth
+    username = "{{ influxdb.username }}"
+    password = "{{ influxdb.passwd }}"
+	
+[[outputs.influxdb]]
     urls = ["http://192.168.100.1:58086"]
     database = "{{ influxdb.dbname }}"
     # HTTP Basic Auth

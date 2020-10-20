@@ -3,7 +3,10 @@ ansible_user=root
 use_chassis_hardware_sn=false
 
 [cluster_server]
-127.0.0.1 influxdb_cluster=true
+192.168.44.56 influxdb_cluster=true
+
+[cluster_server_backup]
+192.168.44.57 influxdb_cluster=true
 
 [blade-mxn]
 192.168.40.25 SN=CBT2201925000002 tag_location=xinxigang

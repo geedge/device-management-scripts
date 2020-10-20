@@ -5,8 +5,8 @@
 
 - name: "copy Anaconda to destination server"
   copy:
-    src: "{{ role_path }}/files/"
-    dest: /tmp
+    src: "{{ role_path }}/files/Anaconda3-2019.10-Linux-x86_64.sh"
+    dest: /tmp/Anaconda3-2019.10-Linux-x86_64.sh
   when: return.rc != 0
 
 - name: "install ipython"

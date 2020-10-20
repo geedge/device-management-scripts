@@ -2,7 +2,8 @@ grafana:
     http_port: 53000
 
 influxdb:
-    cluster_ip: "10.3.60.8" 
+    cluster_ip: "192.168.44.56" 
+    cluster_ip_backup: "192.168.44.57" 
     dbname: tsg_stat
     username: admin
     passwd: tsg2019
@@ -13,7 +14,8 @@ influxdb:
 consul:
     datacenter: consul-yz
     dckey: "XwXLAbVN1C44dLUVJ6UL5A=="
-    cluster_ip: "10.3.60.8"
+    cluster_ip: "192.168.44.56"
+    cluster_ip_backup: "192.168.44.57"
     cluster_ethname: em1
     external_ethname: enp2s0
     mcn01_internal_ethname: ens1f3
@@ -22,15 +24,26 @@ consul:
 mariadb:
     username: root
     password: 111111
-    cluster_ip: "10.3.60.7"
+    cluster_ip: "192.168.40.210"
 
 oam:
     snmptrapd_ip: "127.0.0.1"
     snmptrapd_port: 162
+    mcn0_ip: "192.168.100.1"
 
 tsg_cli:
-    rpm_file_name: "tsg-cli-1.0.17.19ebf72-1.el7.x86_64.rpm"    
+    rpm_file_name: "tsg-cli-1.0.18.c5fdb96-1.el7.x86_64.rpm"    
 
+ha_master:
+    instance_state: MASTER
+    ethname: eth0
+    virtual_ip: "192.168.44.58"
+
+ha_backup:
+    instance_state: BACKUP
+    ethname: eth0
+    virtual_ip: "192.168.44.58"
+    
 java_version: jdk1.8.0_73
-bifang_api_ip: "10.3.60.7"
+bifang_api_ip: "192.168.44.3"
 bifang_api_port: 8080

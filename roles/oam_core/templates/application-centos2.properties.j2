@@ -24,8 +24,8 @@ ipmi.fru.mcn3=ipmitool -t 0x88 fru
 network.data=/opt/tsg/oam_core/shell/network.sh
 
 # 本机influx和mariadb地址
-oam.local.server.mariadb.ip={{ mcn0_ip }}
-oam.local.server.influxdb.ip={{ mcn0_ip }}
+oam.local.server.mariadb.ip={{ oam.mcn0_ip }}
+oam.local.server.influxdb.ip={{ oam.mcn0_ip }}
 # 集群influx和mariadb地址
 oam.cluster.server.mariadb.ip={{ mariadb.cluster_ip }}
 oam.cluster.server.influxdb.ip={{ influxdb.cluster_ip }}

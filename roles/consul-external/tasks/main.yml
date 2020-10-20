@@ -12,8 +12,10 @@
 
 - name: "Template config-server.json"
   template: 
-    src: "{{ role_path }}/templates/config-server.json.j2"
-    dest: /opt/consul-external/etc/consul/config-server.json
+    #src: "{{ role_path }}/templates/config-server.json.j2"
+    #dest: /opt/consul-external/etc/consul/config-server.json
+    src: "{{ role_path }}/templates/config-client.json.j2"
+    dest: /opt/consul-external/etc/consul/config-client.json
   tags: template
 
 - name: "Install consul-external"
