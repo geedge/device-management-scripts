@@ -2,6 +2,8 @@
 
 #mxn
 
+#ps -afx |grep xxx,  结果是空返回值是1; 结果不为空返回值是0;
+
 #防止因上一次的命令阻塞或长时间未返回,
 #导致10秒内还不结束, 要强行杀掉,
 #否则长时间运行后, 会有大量后台进程运行!
@@ -10,8 +12,12 @@ killall_uncompleted_cmd(){
     #killall -9 -q tsg_diagnose_background
     #killall -9 -q tsg_update_tags
 	
-	rm -rf /tmp/_MEI*
-}
+	cmd_run=`ps -ef | grep tsg_ | grep -v grep`
+	if [ ${#cmd_run} -lt 1 ] ; then
+	    #在没有其他tsg_xxx命令正在执行时, 删除执行命令错误被强制kill时, python生成的临时文件
+	    rm -rf /tmp/_MEI*
+    fi
+} 
 
 start_background_cmd(){
     #后台并发运行, 保证所有命令的开始运行时间基本一样，

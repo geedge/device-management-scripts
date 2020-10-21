@@ -12,7 +12,7 @@ influxdb:
     wal_dir: /var/lib/influxdb/wal-dir
 
 consul:
-    datacenter: consul-yz
+    datacenter: consul-kz
     dckey: "XwXLAbVN1C44dLUVJ6UL5A=="
     cluster_ip: "192.168.44.56"
     cluster_ip_backup: "192.168.44.57"
@@ -32,7 +32,7 @@ oam:
     mcn0_ip: "192.168.100.1"
 
 tsg_cli:
-    rpm_file_name: "tsg-cli-1.0.18.c5fdb96-1.el7.x86_64.rpm"    
+    rpm_file_name: "tsg-cli-1.0.19.ecf9c86-1.el7.x86_64.rpm"    
 
 ha_master:
     instance_state: MASTER
@@ -47,3 +47,5 @@ ha_backup:
 java_version: jdk1.8.0_73
 bifang_api_ip: "192.168.43.5"
 bifang_api_port: 8080
+
+tag_location: "xinxigang"

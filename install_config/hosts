@@ -9,16 +9,16 @@ use_chassis_hardware_sn=false
 192.168.44.57 influxdb_cluster=true
 
 [blade-mxn]
-192.168.40.25 SN=CBT2201925000002 tag_location=xinxigang
+192.168.40.25 
 
 [blade-mcn0]
-192.168.40.21 SN=CBT2201925000002 tag_location=xinxigang
+192.168.40.21 
 
 [blade-mcn1]
-192.168.40.22 SN=CBT2201925000002 tag_location=xinxigang
+192.168.40.22 
 
 [blade-mcn2]
-192.168.40.23 SN=CBT2201925000002 tag_location=xinxigang
+192.168.40.23 
 
 [blade-mcn3]
-192.168.40.24 SN=CBT2201925000002 tag_location=xinxigang
+192.168.40.24 

@@ -3,7 +3,6 @@ Description=oam_cli restart
 
 [Service]
 Type=oneshot
-
 ExecStart=/usr/bin/mount --bind /opt/tsg/etc /home/tsgroot/opt/tsg/etc
 ExecStart=/usr/bin/mount -o bind /proc /home/tsgroot/proc
 ExecStart=/usr/bin/mount -o remount,rw,bind /proc /home/tsgroot/proc

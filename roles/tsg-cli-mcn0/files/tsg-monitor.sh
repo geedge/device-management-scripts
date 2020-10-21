@@ -17,8 +17,13 @@ killall_uncompleted_cmd(){
     killall -9 -q tsg_monit_protocol_v4
     #killall -9 -q tsg_monit_stream_v3
     killall -9 -q tsg_monit_stream_v4
-	
-	rm -rf /tmp/_MEI*
+
+	cmd_run=`ps -ef | grep tsg_ | grep -v grep`
+	if [ ${#cmd_run} -lt 1 ] ; then
+	    #在没有其他tsg_xxx命令正在执行时, 删除执行命令错误被强制kill时, python生成的临时文件
+	    rm -rf /tmp/_MEI*
+    fi	
+
 }
 
 start_background_cmd(){
