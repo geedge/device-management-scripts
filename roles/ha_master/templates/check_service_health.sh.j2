@@ -1,36 +1,46 @@
-#!/bin/bash
+#!/bin/sh
 
 #running:0,  stop:3
+
 CONSUL_STATE=0
 OAM_CLUSTER_STATE=0
-INFLUXDB_STATE=0
+INFLUXD_STATE=0
 
 check_consul_state(){
-    CONSUL_STATE=$(systemctl status oam_cluster.service)
-	if [ $CONSUL_STATE -ne 0 ]
-	then	
-		return 1
-	else 
-		return 0
-	fi
+    CONSUL_RESULT=$(systemctl --quiet  status consul-server-external_new.service > /dev/null 2>&1)
+    CONSUL_STATE=$?
+    if [ $CONSUL_STATE -ne 0 ]
+    then
+        echo "consul.service fail"
+        return 1
+    else
+        echo "consul.service succ"
+        return 0
+    fi
 }
 
 check_oam_cluster_state(){
-    OAM_CLUSTER_STATE=$(systemctl status oam_cluster.service)
+    OAM_CLUSTER_RESULT=$(systemctl status oam_cluster.service > /dev/null 2>&1)
+    OAM_CLUSTER_STATE=$?
 	if [ $OAM_CLUSTER_STATE -ne 0 ]
-	then	
-		return 1
+	then
+            echo "oam_cluster.service fail"
+	    return 1
 	else 
+            echo "oam_cluster.service succ"
 		return 0
 	fi
 }
 
 check_influxdb_state(){
-    INFLUXDB_STATE=$(systemctl status influxd.service)
-	if [ $INFLUXDB_STATE -ne 0 ]
+    INFLUXD_RESULT=$(systemctl status influxd.service > /dev/null 2>&1)
+    INFLUXD_STATE=$?
+	if [ $INFLUXD_STATE -ne 0 ]
 	then	
+            echo "influxd.service fail"
 		return 1
 	else 
+            echo "influxd.service succ"
 		return 0
 	fi	
 }
@@ -39,22 +49,22 @@ check_influxdb_state(){
 
 #return value: 0:succ; 1:error
 check_service_health(){
-    state = check_consul_state()
-	if [ $state -ne 0 ]
+    check_consul_state
+	if [ $? -ne 0 ]
 	then 
 	    echo "consul service fail!"
 		return 1
 	fi
 
-    state = check_oam_cluster_state()
-	if [ $state -ne 0 ]
+    check_oam_cluster_state
+	if [ $? -ne 0 ]
 	then 
 	    echo "oam_cluster service fail!"
 		return 1
 	fi
 
-    state = check_influxdb_state()
-	if [ $state -ne 0 ]
+    check_influxdb_state
+	if [ $? -ne 0 ]
 	then 
 	    echo "influxd service fail!"
 		return 1
@@ -63,22 +73,52 @@ check_service_health(){
 	return 0
 }
 
+service_try_restart(){
+	check_consul_state
+        if [ $? -ne 0 ]
+        then
+	    echo " restart consul service..."
+	    TEMP_RESULT=`systemctl restart consul-server-external_new.service`
+	    sleep 3
+        fi
 
-check_service_health()
-if [ $? ne 0]
+	check_oam_cluster_state
+        if [ $? -ne 0 ]
+        then
+	    echo " restart oam_cluster service..."
+	    TEMP_RESULT=`systemctl restart oam_cluster.service`
+	    sleep 3
+        fi
+
+	check_influxdb_state
+        if [ $? -ne 0 ]
+        then
+	    echo " restart influxd service..."
+	    TEMP_RESULT=`systemctl restart influxd.service`
+	    sleep 3
+        fi
+
+    return 0
+}
+
+check_service_health
+if [ $? -ne 0 ]
 then
-
+    echo "check service health fail, try restart...."
+    service_try_restart
+else
+    echo "check service health succ!"
+    exit 0
 fi
-
 
 
 #检查到错误且重启之后, 再检查一遍
 check_service_health()
-if [ $? ne 0]
+if [ $? -ne 0 ]
 then
     echo "check service health fail!"
     exit 1
 else 
-	echo "check service health succ!"
+    echo "check service health succ!"
     exit 0	
 fi
