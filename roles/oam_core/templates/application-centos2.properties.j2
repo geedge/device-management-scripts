@@ -47,10 +47,13 @@ datasource.second.password={{ mariadb.password }}
 oam.writer.scheduler.interval=60000
 oam.writer.scheduler.ipmi.interval=180000
 
+logging.level.com.tsg.oam=ERROR
 logging.level.com.cs.oam=ERROR
 
 # Absolute path
 oam.rest.oam_core=/opt/tsg/oam_core/application-centos2.properties
 oam.rest.oam_snmp=/opt/tsg/snmp/application.properties
+oam.rest.oam_snmp_user=/opt/tsg/snmp/AgentConfig.properties
 #oam.rest.cli_agent=opt/tsg/snmp/application-centos2.properties
 oam.rest.cli=/home/tsgroot/opt/tsg/cli/application.properties
+
