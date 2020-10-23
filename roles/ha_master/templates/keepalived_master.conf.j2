@@ -21,7 +21,7 @@ vrrp_script check_service_health {
 vrrp_instance VI_1 {
     state {{ ha_master.instance_state }}
     interface {{ ha_master.ethname }}
-    virtual_router_id 51
+    virtual_router_id {{ ha_master.oam_virtual_router_id }}
     priority 100
     advert_int 1
     authentication {

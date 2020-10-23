@@ -38,11 +38,13 @@ ha_master:
     instance_state: MASTER
     ethname: eth0
     virtual_ip: "192.168.44.58"
+    oam_virtual_router_id: 54
 
 ha_backup:
     instance_state: BACKUP
     ethname: eth0
     virtual_ip: "192.168.44.58"
+    oam_virtual_router_id: 54
     
 java_version: jdk1.8.0_73
 bifang_api_ip: "192.168.43.5"

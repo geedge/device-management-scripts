@@ -1,50 +1,38 @@
 ! Configuration File for keepalived
 
 global_defs {
-   router_id LVSTEST2
+   router_id OAMHA
 }
 
 #监控服务httpd, mysql等
-vrrp_script chk_http_service {
-    script "/etc/keepalived/chk_http_service.sh"
+vrrp_script check_service_health {
+    script "/etc/keepalived/check_service_health.sh"
     #每2s检查一次
     interval 3
-    #每次检查-20
+    #每次检查-10
     weight -10
- fail 3
-  #失败次数，如果请求失败2次就认为此节点资源发生故障将进行切换
+    fail 3
+    #失败次数，如果请求失败2次就认为此节点资源发生故障将进行切换
 
- rise 1
-  #监测成功就立即成功，如果请求一次成功就默认此节点资源恢复正常
+    rise 1
+    #监测成功就立即成功，如果请求一次成功就默认此节点资源恢复正常
 }
 
 vrrp_instance VI_1 {
-    state BACKUP
-    interface eth0
-    virtual_router_id 51
+    state {{ ha_backup.instance_state }}
+    interface {{ ha_backup.ethname }}
+    virtual_router_id {{ ha_backup.oam_virtual_router_id }}
     priority 10
     advert_int 1
     authentication {
         auth_type PASS
-        auth_pass 1111
+        auth_pass oamha
     }
     virtual_ipaddress {
-        192.168.44.244
+        {{ ha_backup.virtual_ip }}
     }
     #触发的脚本
     track_script {
-        chk_http_service  #检测脚本，上面配置的
+        check_service_health  #检测脚本，上面配置的
     }
-}
-
-virtual_server 192.168.44.244 80 {
-    delay_loop 6
-    lb_algo rr
-    lb_kind NAT
-    persistence_timeout 50
-    protocol TCP
-
-    #real_server 127.0.0.1 80 {
-    #    weight 1
-    #}
 }
