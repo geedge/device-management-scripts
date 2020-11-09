@@ -1,0 +1,21 @@
+- hosts: cluster_master
+  roles:
+    - oam_cluster
+    - consul-cluster
+    # mariadb复用毕方
+    #- mariadb
+    - influxdb
+    - ha_master
+
+- hosts: cluster_slave1
+  roles:
+    - oam_cluster
+    - consul-cluster
+    # mariadb复用毕方
+    #- mariadb
+    - influxdb
+    - ha_backup
+
+- hosts: cluster_slave2
+  roles:
+    - consul-cluster
