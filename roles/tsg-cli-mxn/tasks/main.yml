@@ -1,32 +1,32 @@
 ---
-- name: "copy tsg_read_sn.sh to destination server"
-  copy:
-    src: "{{ role_path }}/files/tsg_read_sn.sh"
-    dest: "/tmp/tsg-cli-deploy/"    
-    mode: 0755  
-  when: use_chassis_hardware_sn | bool  
-
-- name: "copy cmm_api_tst to destination server"
-  copy:
-    src: "{{ role_path }}/files/cmm_api_tst"
-    dest: "/tmp/tsg-cli-deploy/"    
-    mode: 0755      
-  when: use_chassis_hardware_sn | bool      
-
-- name: "run tsg_read_sn.sh on destination server"
-  shell: ./tsg_read_sn.sh
-  args:
-    chdir: /tmp/tsg-cli-deploy/
-  when: use_chassis_hardware_sn | bool  
-
-- name: "scp tsg_sn.json from destination server to local"
-  fetch:
-    src: "/tmp/tsg-cli-deploy/tsg_sn.json"
-    dest: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
-    flat: yes
-  when: use_chassis_hardware_sn | bool 
+#- name: "copy tsg_read_sn.sh to destination server"
+#  copy:
+#    src: "{{ role_path }}/files/tsg_read_sn.sh"
+#    dest: "/tmp/tsg-cli-deploy/"    
+#    mode: 0755  
+#  when: use_chassis_hardware_sn | bool  
+#
+#- name: "copy cmm_api_tst to destination server"
+#  copy:
+#    src: "{{ role_path }}/files/cmm_api_tst"
+#    dest: "/tmp/tsg-cli-deploy/"    
+#    mode: 0755      
+#  when: use_chassis_hardware_sn | bool      
+#
+#- name: "run tsg_read_sn.sh on destination server"
+#  shell: ./tsg_read_sn.sh
+#  args:
+#    chdir: /tmp/tsg-cli-deploy/
+#  when: use_chassis_hardware_sn | bool  
+#
+#- name: "scp tsg_sn.json from destination server to local"
+#  fetch:
+#    src: "/tmp/tsg-cli-deploy/tsg_sn.json"
+#    dest: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
+#    flat: yes
+#  when: use_chassis_hardware_sn | bool 
   
-- name: "copy tsg-cli rmp to destination server"
+- name: "copy tsg-cli rpm to destination server"
   synchronize:
     src: "{{ role_path }}/../tsg-common-files/{{ tsg_cli.rpm_file_name }}"
     dest: "/tmp/tsg-cli-deploy/"
@@ -39,18 +39,22 @@
     packages:
     - /tmp/tsg-cli-deploy/{{ tsg_cli.rpm_file_name }}
 
+- name: "create /opt/tsg/etc/"
+  file:
+    path: /opt/tsg/etc
+    state: directory
+
 - name: Template the tsg_sn.json
   template:
     src: "{{ role_path }}/templates/tsg_sn.json.j2"
     dest: "/opt/tsg/etc/tsg_sn.json"
   tags: template
-  when: not use_chassis_hardware_sn | bool 
 
-- name: "copy tsg_sn.json to destination server"
-  copy:
-    src: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
-    dest: "/opt/tsg/etc/tsg_sn.json"
-  when: use_chassis_hardware_sn | bool 
+#- name: "copy tsg_sn.json to destination server"
+#  copy:
+#    src: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
+#    dest: "/opt/tsg/etc/tsg_sn.json"
+#  when: use_chassis_hardware_sn | bool 
 
 - name: Template the tsg_tags.json
   template:
@@ -77,7 +81,6 @@
     dest: "/usr/lib/systemd/system"
 
 - name: "copy tsg-monitor.sh to destination server"
-  #synchronize:
   copy:
     src: "{{ role_path }}/files/tsg-monitor.sh"
     dest: "/opt/tsg/tsg-monitor/"    

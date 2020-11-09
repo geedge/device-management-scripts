@@ -17,13 +17,12 @@
     src: "{{ role_path }}/templates/tsg_sn.json.j2"
     dest: /opt/tsg/etc/tsg_sn.json
   tags: template
-  when: not use_chassis_hardware_sn | bool 
 
-- name: "copy tsg_sn.json to destination server"
-  synchronize:
-    src: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
-    dest: "/opt/tsg/etc/tsg_sn.json"
-  when: use_chassis_hardware_sn | bool 
+#- name: "copy tsg_sn.json to destination server"
+#  synchronize:
+#    src: "{{ role_path }}/../tsg-common-files/tsg_sn.json"
+#    dest: "/opt/tsg/etc/tsg_sn.json"
+#  when: use_chassis_hardware_sn | bool 
 
 - name: Template the tsg_tags.json
   template:
@@ -48,7 +47,6 @@
     dest: "/opt/tsg/etc/"
 
 - name: "copy tsg-monitor.sh to destination server"
-  #synchronize:
   copy:
     src: "{{ role_path }}/files/tsg-monitor.sh"
     dest: "/opt/tsg/tsg-monitor/"    

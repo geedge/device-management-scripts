@@ -27,7 +27,7 @@
 
 - name: "Start consul"
   systemd:
-    name: consul-server-external
+    name: consul-client
     state: restarted
     enabled: yes
     daemon_reload: yes

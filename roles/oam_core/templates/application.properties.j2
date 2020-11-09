@@ -74,7 +74,7 @@ datasource.first.configuration.maximum-pool-size=30
 # datasource - second
 datasource.second.jdbc-url=jdbc:mysql://${oam.cluster.server.mariadb.ip}/tsg_cluster?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
 datasource.second.username={{ mariadb.username }}
-datasource.second.password={{ mariadb.password }}
+datasource.second.password={{ mariadb.cluster_password }}
 datasource.second.driver-class-name=com.mysql.jdbc.Driver
 datasource.second.configuration.maximum-pool-size=30
 
@@ -108,4 +108,4 @@ oam.alarm.trap.ipport={{ oam.snmptrapd_ip }}:{{ oam.snmptrapd_port }}
 oam.alarm.trap.public=public
 oam.snmp.version=3
 oam.snmp.username=tsgadmin
-oam.snmp.password=cli202001
+oam.snmp.password=cli202011
