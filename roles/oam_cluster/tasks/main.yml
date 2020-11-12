@@ -9,6 +9,17 @@
       - /tmp/oam_cluster-1.0-1.0.x86_64.rpm
     state: present
 
+
+- name: "Templates application-centos2.properties"
+  template:
+    src: "{{role_path}}/templates/application-centos2.properties.j2"
+    dest: /opt/tsg/oam_cluster/application-centos2.properties
+
+- name: "Templates application.properties"
+  template:
+    src: "{{role_path}}/templates/application.properties.j2"
+    dest: /opt/tsg/oam_cluster/application.properties
+
 - name: "Start oam_cluster"
   systemd:
     name: oam_cluster

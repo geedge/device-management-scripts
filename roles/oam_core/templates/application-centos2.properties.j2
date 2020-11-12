@@ -24,14 +24,14 @@ ipmi.fru.mcn3=ipmitool -t 0x88 fru
 network.data=/opt/tsg/oam_core/shell/network.sh
 
 # 本机influx和mariadb地址
-oam.local.server.mariadb.ip={{ mcn0_ip }}
-oam.local.server.influxdb.ip={{ mcn0_ip }}
+oam.local.server.mariadb.ip={{ oam.mcn0_ip }}
+oam.local.server.influxdb.ip={{ oam.mcn0_ip }}
 # 集群influx和mariadb地址
 oam.cluster.server.mariadb.ip={{ mariadb.cluster_ip }}
 oam.cluster.server.influxdb.ip={{ influxdb.cluster_ip }}
 
 # influxdb端口
-oam.influx.port=58086
+oam.influx.port={{ influxdb.port }}
 
 # influxdb - cluster
 oam.writer.influxcluster.db={{ influxdb.dbname }}
@@ -41,16 +41,19 @@ datasource.first.password={{ mariadb.password }}
 
 # datasource - cluster
 datasource.second.username={{ mariadb.username }}
-datasource.second.password={{ mariadb.password }}
+datasource.second.password={{ mariadb.cluster_password }}
 
 
 oam.writer.scheduler.interval=60000
 oam.writer.scheduler.ipmi.interval=180000
 
+logging.level.com.tsg.oam=ERROR
 logging.level.com.cs.oam=ERROR
 
 # Absolute path
 oam.rest.oam_core=/opt/tsg/oam_core/application-centos2.properties
 oam.rest.oam_snmp=/opt/tsg/snmp/application.properties
+oam.rest.oam_snmp_user=/opt/tsg/snmp/AgentConfig.properties
 #oam.rest.cli_agent=opt/tsg/snmp/application-centos2.properties
 oam.rest.cli=/home/tsgroot/opt/tsg/cli/application.properties
+

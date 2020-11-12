@@ -2,35 +2,62 @@ grafana:
     http_port: 53000
 
 influxdb:
-    cluster_ip: "10.3.60.8" 
+    cluster_ip: "10.4.62.5" 
+    cluster_ip_backup: "10.4.62.6" 
     dbname: tsg_stat
     username: admin
     passwd: tsg2019
+    port: 1886
     meta_dir: /var/lib/influxdb/meta
     data_dir: /var/lib/influxdb/data
     wal_dir: /var/lib/influxdb/wal-dir
 
+telegraf:
+    udp_port: 1825
+    udp_listener: 1826
+
 consul:
-    datacenter: consul-yz
+    datacenter: consul-kz
     dckey: "XwXLAbVN1C44dLUVJ6UL5A=="
-    cluster_ip: "10.3.60.8"
+    cluster_ip: 
+      - "10.4.62.5"
+      - "10.4.62.6"
+      - "10.4.63.3"
     cluster_ethname: em1
-    external_ethname: enp2s0
-    mcn01_internal_ethname: ens1f3
-    mcn23_internal_ethname: ens8f3
+    client_ethname: enp2s0
 
 mariadb:
     username: root
     password: 111111
-    cluster_ip: "10.3.60.7"
+    cluster_password: tsg369258
+    cluster_ip: "10.4.62.251"
 
 oam:
+    cluster_port: 880
+    core_port: 880
+    cli_agent_port: 822
+    snmp_port: 1611
     snmptrapd_ip: "127.0.0.1"
-    snmptrapd_port: 162
+    snmptrapd_port: 164
+    mcn0_ip: "192.168.100.1"
 
 tsg_cli:
-    rpm_file_name: "tsg-cli-1.0.17.19ebf72-1.el7.x86_64.rpm"    
+    rpm_file_name: "tsg-cli-1.1.1.ea016fc-1.el7.x86_64.rpm"    
 
+ha_master:
+    instance_state: MASTER
+    ethname: em1
+    virtual_ip: "10.4.62.251"
+    oam_virtual_router_id: 54
+
+ha_backup:
+    instance_state: BACKUP
+    ethname: em1
+    virtual_ip: "10.4.62.251"
+    oam_virtual_router_id: 54
+    
 java_version: jdk1.8.0_73
-bifang_api_ip: "10.3.60.7"
+bifang_api_ip: "10.4.62.252"
 bifang_api_port: 8080
+
+tag_location: "Nur-sultan"

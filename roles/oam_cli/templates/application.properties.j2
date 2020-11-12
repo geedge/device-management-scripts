@@ -6,10 +6,9 @@ mxn.config=/opt/tsg/etc/tsg_chassis_ip.json
 port.config=/opt/tsg/etc/tsg_chassis_port.json
 sn.config=/opt/tsg/etc/tsg_sn.json
 tags.config=/opt/tsg/etc/tsg_tags.json
-cli.agent.port=50222
+cli.agent.port={{ oam.cli_agent_port }}
 
-# oam.influx.url=http://192.168.161.134:8086
-oam.influx.url=http://{{ mcn0_ip }}:58086
+oam.influx.url=http://{{ oam.mcn0_ip }}:{{ influxdb.port }}
 oam.influx.db={{ influxdb.dbname }}
 oam.influx.user={{ influxdb.username }}
 oam.influx.password={{ influxdb.passwd }}
@@ -17,10 +16,12 @@ oam.influx.password={{ influxdb.passwd }}
 oam.cli.user.admin=tsgadmin
 oam.cli.user.user=tsguser
 
-cli.rest.root=http://{{ bifang_api_ip }}:{{ bifang_api_port }}/v1
-cli.rest.login=${cli.rest.root}/user/login
-cli.rest.policy=${cli.rest.root}/policy/compile
-cli.rest.policy.object=${cli.rest.root}/policy/object
-cli.rest.policy.object.batch=${cli.rest.root}/policy/object/batch
+cli.rest.root=http://{{ bifang_api_ip }}:{{ bifang_api_port }}
+cli.rest.login=${cli.rest.root}/v1/user/login
+cli.rest.policy=${cli.rest.root}/v2/policy/compile
+cli.rest.policy.object=${cli.rest.root}/v1/policy/object
+cli.rest.policy.object.batch=${cli.rest.root}/v1/policy/object/batch
 
-oam.rest.timeout=10000
+cli.tsg_show.rows=50
+
+oam.rest.timeout=0

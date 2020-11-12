@@ -14,3 +14,20 @@
     src: "{{role_path}}/templates/application.properties.j2"
     dest: /home/tsgroot/opt/tsg/cli/application.properties
   tags: template
+
+- name: "Templates application.properties"
+  template:
+    src: "{{role_path}}/templates/application.properties.j2"
+    dest: /opt/tsg/cli/application.properties
+  tags: template
+
+- name: "copy oam_cli.service to destination server"
+  copy:
+    src: "{{ role_path }}/files/oam_cli.service"
+    dest: /usr/lib/systemd/system/oam_cli.service
+
+- name: "restart oam_cli service"
+  systemd:
+    daemon_reload: yes
+    name: oam_cli
+    state: restarted    

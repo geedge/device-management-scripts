@@ -5,7 +5,7 @@
 
 - name: "set tsg_oam database"
   shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
-  when: return.rc != 0
+  #when: return.rc != 0
 
 - name: "Templates tsg_threshold.sql"
   template:

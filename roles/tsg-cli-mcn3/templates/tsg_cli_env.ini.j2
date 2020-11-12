@@ -1,0 +1,29 @@
+[influxdb]
+server_ip=192.168.100.1
+server_port={{ influxdb.port }}
+username={{ influxdb.username }}
+password={{ influxdb.passwd }}
+database={{ influxdb.dbname }}
+
+[telegraf]
+server_ip=192.168.100.1
+server_port={{ telegraf.udp_listener }}
+
+[sapp]
+fs2_stat_file=/home/mesasoft/sapp_run/fs2_sysinfo.log
+
+[kni]
+fs2_stat_file=/home/mesasoft/sapp_run/fs2_kni.status
+
+[tfe]
+fs2_stat_file=/var/log/tfe/tfe.fs2
+
+
+[threshold]
+#means percent, n%
+cpu_critical_high=90
+cpu_major_high=80
+mem_critical_high=90
+mem_major_high=80
+disk_critical_high=90
+disk_major_high=80

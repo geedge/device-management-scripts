@@ -24,6 +24,11 @@
     src: "{{ role_path }}/templates/oam_cli_agent.service.j2"
     dest: /usr/lib/systemd/system/oam_cli_agent.service
 
+- name: "Templates application.properties.j2"
+  template:
+    src: "{{ role_path }}/templates/application.properties.j2"
+    dest: /opt/tsg/cli_agent/application.properties
+
 - name: "Start snmpd"
   systemd:
     name: snmpd

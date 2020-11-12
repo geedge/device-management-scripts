@@ -6,7 +6,8 @@
 	"disable_update_check" : true,
 	"bootstrap" : true,
 	"log_file" : "/var/consul-cluster/log/consul_cluster.log",
-	"retry_join" : ["{{ consul.cluster_ip }}"],
+	"log_level" : "info",
+	"retry_join" : ["{{ consul.cluster_ip[0] }}","{{ consul.cluster_ip[1] }}","{{ consul.cluster_ip[2] }}"],
 	"retry_interval" : "10s"
 }
 

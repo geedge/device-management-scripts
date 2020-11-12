@@ -1,0 +1,14 @@
+# Systemd unit file for default tomcat
+# 
+
+[Unit]
+Description=Consul-client
+After=network.target
+
+[Service]
+EnvironmentFile=/opt/consul-client/etc/systemd/consul.conf
+ExecStartPre=/opt/consul-client/script/consul_bind_ip_generate.sh
+ExecStart=/opt/consul-client/bin/consul agent -config-dir /opt/consul-client/etc/ -config-file /opt/consul-client/etc/consul/config-client.json -bind ${CONSUL_BIND_ADDRESS} -client 0.0.0.0
+
+[Install]
+WantedBy=multi-user.target

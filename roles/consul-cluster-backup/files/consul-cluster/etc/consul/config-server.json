@@ -1,0 +1,12 @@
+{
+	"server" : true,
+	"datacenter" : "consul-ADC01",
+	"data_dir" : "/var/consul-external",
+	"encrypt" : "h1fHoHnJ+n+764ObqTNVjw==",
+	"disable_update_check" : true,
+	"bootstrap" : true,
+	"log_file" : "/var/consul-external/log/consul_external.log",
+	"retry_join" : ["192.168.200.5"],
+	"retry_interval" : "10s"
+}
+

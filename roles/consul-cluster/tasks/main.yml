@@ -21,7 +21,7 @@
 
 - name: "Start consul-cluster"
   systemd:
-    name: consul-server-cluster
+    name: consul-cluster
     state: restarted
     enabled: yes
     daemon_reload: yes

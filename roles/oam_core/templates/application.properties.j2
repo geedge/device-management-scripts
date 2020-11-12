@@ -1,7 +1,7 @@
 spring.profiles.active=centos2
-server.port=50080
+server.port={{ oam.core_port }}
 
-cli.agent.port=50222
+cli.agent.port={{ oam.cli_agent_port }}
 
 config.dir=C:/work/codes/oam/cli-common/config
 sn.config=${config.dir}/tsg_sn.json
@@ -32,7 +32,7 @@ oam.cluster.server.mariadb.ip={{ mariadb.cluster_ip }}
 oam.cluster.server.influxdb.ip={{ influxdb.cluster_ip }}
 
 # influxdb端口
-oam.influx.port=58086
+oam.influx.port={{ influxdb.port }}
 
 #oam.writer.snmp.ip=202.43.148.184
 oam.writer.snmp.ip=127.0.0.1
@@ -74,7 +74,7 @@ datasource.first.configuration.maximum-pool-size=30
 # datasource - second
 datasource.second.jdbc-url=jdbc:mysql://${oam.cluster.server.mariadb.ip}/tsg_cluster?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
 datasource.second.username={{ mariadb.username }}
-datasource.second.password={{ mariadb.password }}
+datasource.second.password={{ mariadb.cluster_password }}
 datasource.second.driver-class-name=com.mysql.jdbc.Driver
 datasource.second.configuration.maximum-pool-size=30
 
@@ -108,4 +108,4 @@ oam.alarm.trap.ipport={{ oam.snmptrapd_ip }}:{{ oam.snmptrapd_port }}
 oam.alarm.trap.public=public
 oam.snmp.version=3
 oam.snmp.username=tsgadmin
-oam.snmp.password=cli202001
+oam.snmp.password=cli202011

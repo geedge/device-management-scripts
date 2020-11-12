@@ -1,0 +1,20 @@
+spring.profiles.active=centos2
+server.port={{ oam.cli_agent_port }}
+mcn.dir=C:/work/codes/oam/cli-agent/shell/
+mcn.tsg_reset=${mcn.dir}tsg_reset.bat
+mcn.tsg_diagnose=${mcn.dir}tsg_diagnose.bat
+mcn.tsg_software_reboot=${mcn.dir}tsg_software_reboot.bat
+mcn.tsg_hardware_reboot=${mcn.dir}tsg_hardware_reboot.bat
+#  下面%s的格式为：username:password
+mcn.tsg_passwd=echo %s | chpasswd
+
+mcn.hostname=${mcn.dir}tsg_hostname.bat
+mcn.set_hostname=hostnamectl set-hostname
+mcn.ntpdate=ntpdate
+
+logging.file=oam-cli-agent.log
+logging.file.max-size=10MB
+logging.file.max-history=10
+
+cli.agent.cmd.interval=5
+cli.agent.cmd.delay=0

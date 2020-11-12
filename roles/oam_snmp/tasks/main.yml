@@ -36,3 +36,18 @@
     src: "{{role_path}}/files/snmptrapd.conf"
     dest: /etc/snmp/
     mode: 0755
+
+- name: "copy traphandler.sh"
+  copy:
+    src: "{{role_path}}/files/traphandler.sh"
+    dest: /opt/tsg/snmp/
+    mode: 0755
+
+- name: "stop snmpd"
+  shell: killall -9 snmpd
+  ignore_errors: true
+
+- name: "restart snmpd"
+  shell: /usr/sbin/snmpd -C -c /etc/snmp/snmpd.conf
+  ignore_errors: true
+  
