@@ -1,0 +1,13 @@
+[Unit]
+Description=TSG Device register to consul
+Requires=consul-client.service
+After=consul-client.service
+
+[Service]
+ExecStart=/opt/tsg/tsg-monitor/tsg_cluster_register
+Type=oneshot
+RemainAfterExit=yes
+
+
+[Install]
+WantedBy=multi-user.target
