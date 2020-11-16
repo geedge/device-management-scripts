@@ -52,7 +52,7 @@ oam:
     alarm_app_network_major_high: "0.0001"    
     
 tsg_cli:
-    rpm_file_name: "tsg-cli-1.1.2.93221a7-1.el7.x86_64.rpm"    
+    rpm_file_name: "tsg-cli-1.1.7.420d736-1.el7.x86_64.rpm"    
 
 ha_master:
     instance_state: MASTER

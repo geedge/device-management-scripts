@@ -12,14 +12,11 @@ killall_uncompleted_cmd(){
     killall -9 -q tsg_monit_interface
     killall -9 -q tsg_monit_intercept
 	
-	cmd_run=`ps -ef | grep tsg_ | grep -v grep`
-	if [ ${#cmd_run} -lt 1 ] ; then
-	    #在没有其他tsg_xxx命令正在执行时, 删除执行命令错误被强制kill时, python生成的临时文件
-	    rm -rf /tmp/_MEI*
-    fi
+	/opt/tsg/tsg-monitor/tsg_monitor_cleanup_tmp.sh
 }
 
 start_background_cmd(){
+	mkdir -p  /tmp/__tsg_monitor_tmp_dir
     #后台并发运行, 保证所有命令的开始运行时间基本一样，
     #且不会因某个命令网络拥塞、执行时间长等问题，阻塞while(1)主循环
     /opt/tsg/tsg-monitor/tsg_diagnose_background > /dev/null &

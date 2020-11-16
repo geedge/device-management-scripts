@@ -8,21 +8,17 @@
 #导致10秒内还不结束, 要强行杀掉,
 #否则长时间运行后, 会有大量后台进程运行!
 killall_uncompleted_cmd(){
-    killall -9 -q tsg_cluster_register
+    #killall -9 -q tsg_cluster_register
     #killall -9 -q tsg_diagnose_background
     #killall -9 -q tsg_update_tags
-	
-	cmd_run=`ps -ef | grep tsg_ | grep -v grep`
-	if [ ${#cmd_run} -lt 1 ] ; then
-	    #在没有其他tsg_xxx命令正在执行时, 删除执行命令错误被强制kill时, python生成的临时文件
-	    rm -rf /tmp/_MEI*
-    fi
+	/opt/tsg/tsg-monitor/tsg_monitor_cleanup_tmp.sh
 } 
 
 start_background_cmd(){
+	mkdir -p  /tmp/__tsg_monitor_tmp_dir
     #后台并发运行, 保证所有命令的开始运行时间基本一样，
     #且不会因某个命令网络拥塞、执行时间长等问题，阻塞while(1)主循环
-    /opt/tsg/tsg-monitor/tsg_cluster_register > /dev/null &
+    #/opt/tsg/tsg-monitor/tsg_cluster_register > /dev/null &
     
     #mxn板只检测cpu, mem, disk等, 前台cli命令启用diagnose,
     #后台服务依靠oam snmp模块, 无需运行tsg_diagnose_background

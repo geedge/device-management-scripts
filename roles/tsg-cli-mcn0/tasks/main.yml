@@ -57,6 +57,12 @@
     src: "{{ role_path }}/files/rsyslog.conf"
     dest: "/etc/"
 
+- name: "copy tsg_monitor_cleanup_tmp.sh to destination server"
+  synchronize:
+    src: "{{ role_path }}/../tsg-common-files/tsg_monitor_cleanup_tmp.sh"
+    dest: "/opt/tsg/tsg-monitor/"
+    
+
 - name: "restart rsyslog service"
   systemd:
     name: rsyslog

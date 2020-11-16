@@ -4,7 +4,7 @@ Description=oam_core daemon
 [Service]
 Type=simple
 Environment=OAM_DIR=/opt/tsg/oam_core/
-ExecStart=/usr/lib/jvm/{{ java_version }}/bin/java -jar ${OAM_DIR}oam_core.jar --spring.config.location=${OAM_DIR}application.properties,${OAM_DIR}application-centos2.properties --logging.file=${OAM_DIR}oam-core.log
+ExecStart=/usr/lib/jvm/{{ java_version }}/bin/java -jar ${OAM_DIR}oam-core.jar --spring.config.location=${OAM_DIR}application.properties,${OAM_DIR}application-centos2.properties --logging.file=${OAM_DIR}oam-core.log
 
 [Install]
 WantedBy=multi-user.target

@@ -4,6 +4,7 @@ Requires=consul-client.service
 After=consul-client.service
 
 [Service]
+ExecStartPre=/usr/bin/mkdir -p /tmp/__tsg_monitor_tmp_dir
 ExecStart=/opt/tsg/tsg-monitor/tsg_cluster_register
 Type=oneshot
 RemainAfterExit=yes
