@@ -34,8 +34,8 @@ mariadb:
 
 oam:
     cluster_port: 880
-    core_port: 880
-    cli_agent_port: 822
+    core_port: 1180
+    cli_agent_port: 1122
     snmp_port: 1611
     snmptrapd_ip: "127.0.0.1"
     snmptrapd_port: 164
