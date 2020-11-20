@@ -41,14 +41,14 @@ oam:
     snmptrapd_port: 164
     mcn0_ip: "192.168.100.1"
     alarm_cpu_critical_high: 90
-    alarm_cpu_major_high: 80
+    alarm_cpu_major_high: 85
     alarm_mem_critical_high: 90
-    alarm_mem_major_high: 80
+    alarm_mem_major_high: 85
     alarm_disk_critical_high: 90
-    alarm_disk_major_high: 80
-    alarm_interface_critical_high: "0.0001"
-    alarm_interface_major_high: "0.00005"
-    alarm_app_network_critical_high: "0.0001"
+    alarm_disk_major_high: 85
+    alarm_interface_critical_high: "0.0005"
+    alarm_interface_major_high: "0.0001"
+    alarm_app_network_critical_high: "0.0005"
     alarm_app_network_major_high: "0.0001"    
     
 tsg_cli:
