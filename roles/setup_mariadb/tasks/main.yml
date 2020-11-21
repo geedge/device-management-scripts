@@ -1,10 +1,10 @@
 - name: "judge tsg_oam"
-  shell: mysql -uroot -p111111  -e "show databases;" |grep tsg_oam
+  shell: mysql -u {{ mariadb.username }} -p{{ mariadb.password }}  -e "show databases;" |grep tsg_oam
   register: return
   ignore_errors: true
 
-- name: "set tsg_oam database"
-  shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
+#- name: "set tsg_oam database"
+#  shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
   #when: return.rc != 0
 
 - name: "Templates tsg_threshold.sql"
