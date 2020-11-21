@@ -1,3 +1,8 @@
+- name: "Templates application.properties.j2"
+  template:
+    src: "{{ role_path }}/templates/application.properties.j2"
+    dest: /opt/tsg/cli_agent/application.properties
+
 
 - name: "Templates oam_cli_agent.service"
   template:
