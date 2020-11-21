@@ -1,0 +1,31 @@
+- hosts: blade-mxn
+  roles:
+    - tsg-cli-mxn
+    - oam_cli_agent_mxn
+    - oam_core
+
+- hosts: blade-mcn0
+  roles:
+    - tsg-cli-mcn0
+    - setup_mariadb
+    - oam_cli_agent
+
+- hosts: blade-mcn1
+  roles:
+    - tsg-cli-mcn1
+    - oam_cli_agent
+
+- hosts: blade-mcn2
+  roles:
+    - tsg-cli-mcn2
+    - oam_cli_agent
+
+- hosts: blade-mcn3
+  roles:
+    - tsg-cli-mcn3
+    - oam_cli_agent
+
+- hosts: blade-mxn
+  roles:
+    - oam_mxn_start
+

@@ -1,0 +1,13 @@
+---
+- hosts: blade-mxn
+  tasks:
+    - name: "stop oam_core.service"
+      service:
+        name: oam_core
+        state: stopped
+      ignore_errors: yes 
+      
+    - name: "uninstall oam_core"
+      yum:
+        name: "oam_core"
+        state: absent           

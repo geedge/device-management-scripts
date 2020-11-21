@@ -1,27 +1,13 @@
-- name: "copy oam_cli_agent_mxn.rpm to destination server"
-  copy:
-    src: "{{ role_path }}/files/"
-    dest: /tmp
-
-- name: "install oam_cli_agent_mxn"
-  yum:
-    name:
-      - /tmp/oam_cli_agent_mxn-1.0-1.0.x86_64.rpm
-    state: present
 
 - name: "Templates oam_cli_agent_mxn.service"
   template:
     src: "{{ role_path }}/templates/oam_cli_agent_mxn.service.j2"
     dest: /usr/lib/systemd/system/oam_cli_agent_mxn.service
 
-- name: "Templates application.properties.j2"
-  template:
-    src: "{{ role_path }}/templates/application.properties.j2"
-    dest: /opt/tsg/cli_agent/application.properties
 
-#- name: "Start oam_cli_agent_mxn"
-#  systemd:
-#    name: oam_cli_agent_mxn
-#    state: restarted
-#    enabled: yes
-#    daemon_reload: yes
+- name: "Start oam_cli_agent_mxn"
+  systemd:
+    name: oam_cli_agent_mxn
+    state: restarted
+    enabled: yes
+    daemon_reload: yes

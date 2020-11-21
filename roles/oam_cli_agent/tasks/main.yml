@@ -1,39 +1,8 @@
-- name: "copy oam_cli_agent.rpm to destination server"
-  copy:
-    src: "{{ role_path }}/files/"
-    dest: /tmp
-
-- name: "install oam_cli_agent"
-  yum:
-    name:
-      - /tmp/oam_cli_agent-1.0-1.0.x86_64.rpm
-    state: present
-
-- name: "bak snmpd.conf"
-  shell: cp -rf /usr/share/snmp/snmpd.conf /usr/share/snmp/snmpd.conf_origin
-  ignore_errors: yes
-  
-- name: "Templates snmpd.conf"
-  template:
-    src: "{{role_path}}/templates/snmpd.conf"
-    dest: /usr/share/snmp/snmpd.conf
-  tags: template
 
 - name: "Templates oam_cli_agent.service"
   template:
     src: "{{ role_path }}/templates/oam_cli_agent.service.j2"
     dest: /usr/lib/systemd/system/oam_cli_agent.service
-
-- name: "Templates application.properties.j2"
-  template:
-    src: "{{ role_path }}/templates/application.properties.j2"
-    dest: /opt/tsg/cli_agent/application.properties
-
-- name: "Start snmpd"
-  systemd:
-    name: snmpd
-    state: restarted
-    enabled: yes
 
 - name: "Start oam_cli_agent"
   systemd:
