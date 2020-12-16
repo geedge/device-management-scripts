@@ -21,9 +21,13 @@ fs2_stat_file=/var/log/tfe/tfe.fs2
 
 [threshold]
 #means percent, n%
-cpu_critical_high=90
-cpu_major_high=80
-mem_critical_high=90
-mem_major_high=80
-disk_critical_high=90
-disk_major_high=80
+cpu_critical_high={{ oam.alarm_cpu_critical_high }}
+cpu_major_high={{ oam.alarm_cpu_major_high }}
+mem_critical_high={{ oam.alarm_mem_critical_high }}
+mem_major_high={{ oam.alarm_mem_major_high }}
+disk_critical_high={{ oam.alarm_disk_critical_high }}
+disk_major_high={{ oam.alarm_disk_major_high }}
+interface_critical_high={{ oam.alarm_interface_critical_high }}
+interface_major_high={{ oam.alarm_interface_major_high }}
+app_network_critical_high={{ oam.alarm_app_network_critical_high }}
+app_network_major_high={{ oam.alarm_app_network_major_high }}

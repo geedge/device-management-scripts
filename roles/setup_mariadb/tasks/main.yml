@@ -1,11 +1,11 @@
 - name: "judge tsg_oam"
-  shell: mysql -uroot -p111111  -e "show databases;" |grep tsg_oam
+  shell: mysql -u {{ mariadb.username }} -p{{ mariadb.password }}  -e "show databases;" |grep tsg_oam
   register: return
   ignore_errors: true
 
 - name: "set tsg_oam database"
   shell: mysql -uroot -p{{ mariadb.password }} -e "create database tsg_oam"
-  #when: return.rc != 0
+  when: return.rc != 0
 
 - name: "Templates tsg_threshold.sql"
   template:
@@ -15,3 +15,14 @@
 
 - name: "import the sql after template"
   shell: mysql -s -h 127.0.0.1 -u {{ mariadb.username }} -p{{ mariadb.password }}  < /tmp/tsg-cli-deploy/tsg_threshold.sql
+
+- name: "copy my.cnf"
+  copy:
+    src: "{{ role_path }}/files/my.cnf"
+    dest: /etc/mysql/my.cnf
+
+- name: "restart mariadb.service"
+  systemd:
+    name: mariadb
+    state: restarted
+    enable: yes

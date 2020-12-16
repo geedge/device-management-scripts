@@ -114,6 +114,11 @@
   shell: cp -rf /home/database/mysql/bin/mysqladmin /usr/local/bin
   when: return.rc != 0
 
+- name: "copy my.cnf"
+  copy:
+    src: "{{ role_path }}/files/my.cnf"
+    dest: /etc/mysql/my.cnf
+
 - name: "start and enable mariadb"
   systemd:
     name: mariadb

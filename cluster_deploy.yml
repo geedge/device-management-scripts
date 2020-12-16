@@ -2,8 +2,7 @@
   roles:
     - oam_cluster
     - consul-cluster
-    # mariadb复用毕方
-    #- mariadb
+    - mariadb
     - influxdb
     - ha_master
 
@@ -11,8 +10,7 @@
   roles:
     - oam_cluster
     - consul-cluster
-    # mariadb复用毕方
-    #- mariadb
+    - mariadb
     - influxdb
     - ha_backup
 

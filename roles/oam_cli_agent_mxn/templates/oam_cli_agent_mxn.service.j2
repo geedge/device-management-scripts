@@ -4,6 +4,7 @@ Description=oam_cli_agent daemon
 [Service]
 Type=simple
 Environment=OAM_DIR=/opt/tsg/cli_agent/
+ExecStartPre=/usr/bin/mkdir -p /tmp/__tsg_monitor_tmp_dir
 ExecStart=/usr/lib/jvm/{{ java_version }}/bin/java -jar ${OAM_DIR}oam_cli_agent.jar --spring.config.location=${OAM_DIR}application.properties,${OAM_DIR}application-centos2.properties --logging.file=${OAM_DIR}oam-cli-agent.log
 
 [Install]
